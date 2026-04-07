@@ -4,83 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="PureBiome — premium prebiotic fibre supplements rooted in 10+ years of research. Australian made, Monash Low FODMAP certified." />
-  <meta name="theme-color" content="#0f1f1c" />
-  <title>PureBiome — Gut Health, Elevated</title>
-  <link rel="canonical" href="https://purebio.me/" />
-  <link rel="alternate" hreflang="en-AU" href="https://purebio.me/" />
-  <link rel="alternate" hreflang="x-default" href="https://purebio.me/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://purebio.me/" />
-  <meta property="og:title" content="PureBiome — Gut Health, Elevated" />
-  <meta property="og:description" content="Premium prebiotic fibre — Australian made, Monash Low FODMAP certified. Essential and Pro lines for everyday microbiome care." />
-  <meta property="og:locale" content="en_AU" />
-  <meta property="og:image" content="https://purebio.me/images/hero-essential-studio.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://purebio.me/images/hero-essential-studio.png" />
-  <meta name="twitter:title" content="PureBiome — Gut Health, Elevated" />
-  <meta name="twitter:description" content="Premium prebiotic fibre — Australian made, Monash Low FODMAP certified." />
+  <title>PureBiome — Homepage v3 (concept)</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://purebio.me/#org",
-        "name": "PureBiome",
-        "url": "https://purebio.me/",
-        "logo": "https://purebio.me/favicon.svg",
-        "description": "Premium prebiotic fibre supplements — Australian made, Monash Low FODMAP certified.",
-        "areaServed": ["AU", "NZ", "GB", "US"],
-        "sameAs": []
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://purebio.me/#website",
-        "url": "https://purebio.me/",
-        "name": "PureBiome",
-        "publisher": { "@id": "https://purebio.me/#org" },
-        "inLanguage": "en-AU"
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://purebio.me/#range",
-        "name": "PureBiome product lines",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-              "@type": "Product",
-              "name": "PureBiome Essential",
-              "description": "Virgin sugarcane prebiotic fibre — gut health daily support.",
-              "brand": { "@type": "Brand", "name": "PureBiome" },
-              "category": "Dietary supplements"
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-              "@type": "Product",
-              "name": "PureBiome Pro",
-              "description": "Prebiotic and probiotic blend for targeted dietary digestive support.",
-              "brand": { "@type": "Brand", "name": "PureBiome" },
-              "category": "Dietary supplements"
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="archive-banner archive-banner--v3" role="status">
+    <div class="container archive-banner__inner">
+      <span class="archive-banner__label">Homepage v3 — canefield-first layout (concept)</span>
+      <a class="archive-banner__link" href="index.html">View current homepage</a>
+    </div>
+  </div>
 
   <header class="site-header" data-header>
     <div class="container header-inner">
@@ -106,7 +45,8 @@
         <a href="#ranges">Ranges</a>
         <a href="#science">Science</a>
         <a href="#stories">Stories</a>
-        <a href="index-classic.html" class="nav__archive">Classic branding</a>
+        <a href="index-v1.html" class="nav__archive">Homepage v1</a>
+        <a href="index.html" class="nav__archive nav__archive--emph">Current</a>
         <a href="#contact" class="btn btn--sm btn--ghost">Contact</a>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -119,7 +59,8 @@
       <a href="#ranges">Ranges</a>
       <a href="#science">Science</a>
       <a href="#stories">Stories</a>
-      <a href="index-classic.html">Classic branding</a>
+      <a href="index-v1.html">Homepage v1</a>
+      <a href="index.html" class="mobile-nav__current">Current homepage</a>
       <a href="#contact">Contact</a>
       <div class="region-select region-select--stacked" role="group" aria-label="Shipping region" data-region-control-mobile>
         <span class="region-select__label">Region</span>
@@ -130,7 +71,7 @@
   </header>
 
   <main id="main">
-    <section class="hero hero--v3 hero--animate" aria-labelledby="hero-heading">
+    <section class="hero hero--v3">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="hero__canefield" aria-hidden="true">
         <div class="hero__canefield-tile"></div>
@@ -139,13 +80,13 @@
       <div class="container hero__grid">
         <div class="hero__copy">
           <p class="eyebrow" data-hero-eyebrow>PureBiome · purebio.me · <span data-region-label>Australia</span></p>
-          <h1 id="hero-heading">A clear way to support your gut</h1>
+          <h1>A clear way to support your gut</h1>
           <p class="lede">
             Foundational fibre nutrition for everyday microbiome care — Australian made, Monash Low FODMAP certified,
             and built to fit real mornings. Start with the starter kit, then make it a daily ritual.
           </p>
           <div class="hero__actions">
-            <button type="button" class="btn btn--primary" data-open-checkout>Buy now</button>
+            <a href="#offer" class="btn btn--primary" data-checkout-cta>Get PureBiome</a>
             <a href="#ranges" class="btn btn--outline">Explore the range</a>
           </div>
           <p class="hero__guarantee">30-day money-back guarantee · <span data-sub-copy>Subscribe &amp; save available in Australia</span></p>
@@ -155,33 +96,17 @@
             <li><strong>Monash</strong> Low FODMAP certified</li>
           </ul>
         </div>
-        <div class="hero__visual hero__visual--cane">
-          <div class="hero__cane-scene" aria-hidden="true">
-            <div class="hero__cane-mist"></div>
-            <div class="hero__cane-svg-wrap">
-              <img
-                class="hero__cane-art"
-                src="images/hero-sugarcane.svg"
-                width="440"
-                height="560"
-                alt=""
-                decoding="async"
-              />
-            </div>
-            <div class="hero__cane-sheen"></div>
-          </div>
+        <div class="hero__visual hero__visual--cane hero__visual--cane-solo">
           <div class="hero__product-stage">
             <figure class="hero__figure">
               <img
                 class="hero__img hero__img--stage"
                 src="images/hero-essential-studio.png"
-                onerror="this.onerror=null;this.src='images/range-essential-card.png';"
                 width="1200"
                 height="900"
                 alt="PureBiome Essential — Gut Health Fibre tubs, Monash Low FODMAP certified"
                 loading="eager"
                 decoding="async"
-                fetchpriority="high"
               />
             </figure>
             <div class="hero__plant-caption">
@@ -193,11 +118,6 @@
                 and PureBiome: crop-first, transparent, Australian.
               </p>
             </div>
-          </div>
-          <div class="hero__floating-card">
-            <p class="hero__card-label">Daily ritual</p>
-            <p class="hero__card-title">Prebiotic fibre that fits real life</p>
-            <p class="hero__card-meta">Sachets · tubs · dietitian-informed Pro line</p>
           </div>
         </div>
       </div>
@@ -269,7 +189,7 @@
               <p class="offer-stack__footnote" data-offer-footnote>* Launch pricing and currency confirmed at checkout. International orders may display in local currency.</p>
             </div>
             <div class="offer-stack__actions">
-              <button type="button" class="btn btn--primary btn--lg" data-open-checkout>Buy now</button>
+              <a href="#offer" class="btn btn--primary btn--lg" data-checkout-cta>Get PureBiome</a>
               <p class="offer-stack__reassure">90-day money-back guarantee · Update or cancel anytime · No lock-in gimmicks</p>
             </div>
           </div>
@@ -333,7 +253,7 @@
 
         <div class="cta-repeat">
           <p class="cta-repeat__lede">Ready to make it routine?</p>
-          <button type="button" class="btn btn--primary" data-open-checkout>Buy now</button>
+          <a href="#offer" class="btn btn--primary" data-checkout-cta>Get PureBiome</a>
         </div>
       </div>
     </section>
@@ -373,7 +293,7 @@
     <section class="guarantee-strip" aria-label="Guarantees">
       <div class="container guarantee-strip__inner">
         <p><strong>30-day money-back guarantee</strong> — Try your starter kit. If it is not a fit, we will make it right.</p>
-        <button type="button" class="btn btn--primary btn--sm" data-open-checkout>Buy now</button>
+        <a href="#offer" class="btn btn--primary btn--sm" data-checkout-cta>Get PureBiome</a>
       </div>
     </section>
 
@@ -410,17 +330,16 @@
     <section class="cta-band" id="contact">
       <div class="container cta-band__inner">
         <div>
-          <h2>Questions before you buy?</h2>
+          <h2>Checkout goes live next — get on the list</h2>
           <p>
-            Two quick steps: <strong>Buy now</strong> opens a short summary, then <strong>Continue to secure checkout</strong> takes you to Stripe
-            (cards, Apple Pay, Google Pay, Link). Set your Payment Links in <code class="cta-band__code">main.js</code> under
-            <code class="cta-band__code">PUREBIO.stripePaymentLinkAu</code> / <code class="cta-band__code">stripePaymentLinkIntl</code>.
+            This marketing preview is built for a <strong>two-click path</strong>: Get PureBiome (pre-filled cart) → pay with Shop Pay, Stripe Link, or your wallet.
+            Wire your store URL in <code class="cta-band__code">main.js</code> when ready.
           </p>
         </div>
         <div class="cta-band__actions">
-          <button type="button" class="btn btn--primary btn--on-dark" data-open-checkout>Buy now</button>
+          <a href="#offer" class="btn btn--primary btn--on-dark" data-checkout-cta>Get PureBiome</a>
           <a href="mailto:hello@purebio.me" class="btn btn--outline btn--on-dark-outline">hello@purebio.me</a>
-          <p class="cta-note">Campaign UTM parameters are preserved when possible.</p>
+          <p class="cta-note">Commerce link: set <code class="cta-band__code">PUREBIO.checkoutCartUrl</code> for express checkout.</p>
         </div>
       </div>
     </section>
@@ -436,7 +355,7 @@
         <p class="footer__tag">PureBiome — prebiotic fibre for everyday microbiome care.</p>
       </div>
       <div class="footer__links">
-        <span><a href="index-classic.html" class="footer__inline-link">Classic branding home</a> · Shop · Learn · Privacy — coming with launch</span>
+        <span>Shop · Learn · Privacy — coming with launch</span>
         <span class="footer__region" data-footer-region>Shipping: Australia</span>
       </div>
     </div>
@@ -444,57 +363,6 @@
       <small>© <span data-year></span> PureBiome. Concept preview for purebio.me — not affiliated with previous domain holders.</small>
     </div>
   </footer>
-
-  <div
-    id="checkout-modal"
-    class="checkout-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="checkout-modal-title"
-    hidden
-    data-checkout-modal
-  >
-    <div class="checkout-modal__dialog">
-      <div class="checkout-modal__head">
-        <h2 id="checkout-modal-title">Your starter kit</h2>
-        <button type="button" class="checkout-modal__close" data-checkout-modal-close aria-label="Close">×</button>
-      </div>
-      <p class="checkout-modal__price" data-modal-price>From $79 AUD*</p>
-      <ul class="checkout-modal__list">
-        <li>Essential tub — 30 serves (berry, orange, or neutral)</li>
-        <li>On-the-go sachets — 10 pack</li>
-        <li>Welcome kit — scoop, shaker, quick-start card</li>
-      </ul>
-      <p class="checkout-modal__note">Shipping and tax are confirmed on Stripe. Use a Payment Link per region in main.js for the fastest demo.</p>
-      <p class="checkout-modal__note checkout-modal__note--warn" data-stripe-missing>
-        Add your Stripe Payment Link in <code>main.js</code> (<code>PUREBIO.stripePaymentLinkAu</code> / <code>stripePaymentLinkIntl</code>) to enable checkout.
-      </p>
-      <div class="checkout-modal__stripe">
-        <a class="btn btn--primary" id="checkout-continue" href="#" rel="noopener noreferrer">Continue to secure checkout</a>
-        <p class="checkout-modal__muted">Secured by Stripe · Wallets and Link supported</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="geo-bar" id="geo-bar" hidden data-geo-bar>
-    <div class="geo-bar__inner">
-      <div class="geo-bar__left">
-        <p class="geo-bar__kicker">Privacy promise</p>
-        <div class="geo-bar__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
-            <circle cx="12" cy="9" r="3.5" />
-            <path d="M6 19.5c.8-3.2 3.5-5 6-5s5.2 1.8 6 5" />
-          </svg>
-        </div>
-        <p class="geo-bar__msg">We think you’re in: <strong data-geo-detected>your region</strong>. Confirm your location.</p>
-      </div>
-      <div class="geo-bar__actions">
-        <button type="button" class="geo-bar__pill geo-bar__pill--primary" data-geo-primary>—</button>
-        <button type="button" class="geo-bar__pill geo-bar__pill--ghost" data-geo-alt hidden>—</button>
-        <button type="button" class="geo-bar__close" aria-label="Dismiss location bar" data-geo-dismiss>×</button>
-      </div>
-    </div>
-  </div>
 
   <script src="main.js" defer></script>
 </body>
