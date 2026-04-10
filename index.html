@@ -138,11 +138,11 @@
       </div>
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow" data-hero-eyebrow>PureBiome · purebio.me · <span data-region-label>Australia</span></p>
-          <h1 id="hero-heading">A clear way to support your gut</h1>
+          <p class="eyebrow" data-hero-eyebrow>PureBiome · Trusted daily fibre · <span data-region-label>Australia</span></p>
+          <h1 id="hero-heading">Professional-grade gut support you can use every day</h1>
           <p class="lede">
-            Foundational fibre nutrition for everyday microbiome care — Australian made, Monash Low FODMAP certified,
-            and built to fit real mornings. Start with the starter kit, then make it a daily ritual.
+            Australian-made prebiotic fibre built for consistency: Monash Low FODMAP certified, easy to take, and designed
+            to fit busy mornings. Start with one clear routine and feel the difference over time.
           </p>
           <div class="hero__actions">
             <button type="button" class="btn btn--primary" data-open-checkout>Buy now</button>
@@ -155,49 +155,25 @@
             <li><strong>Monash</strong> Low FODMAP certified</li>
           </ul>
         </div>
-        <div class="hero__visual hero__visual--cane">
-          <div class="hero__cane-scene" aria-hidden="true">
-            <div class="hero__cane-mist"></div>
-            <div class="hero__cane-svg-wrap">
-              <img
-                class="hero__cane-art"
-                src="images/hero-sugarcane.svg"
-                width="440"
-                height="560"
-                alt=""
-                decoding="async"
-              />
-            </div>
-            <div class="hero__cane-sheen"></div>
-          </div>
-          <div class="hero__product-stage">
-            <figure class="hero__figure">
-              <img
-                class="hero__img hero__img--stage"
-                src="images/hero-essential-studio.png"
-                onerror="this.onerror=null;this.src='images/range-essential-card.png';"
-                width="1200"
-                height="900"
-                alt="PureBiome Essential — Gut Health Fibre tubs, Monash Low FODMAP certified"
-                loading="eager"
-                decoding="async"
-                fetchpriority="high"
-              />
-            </figure>
-            <div class="hero__plant-caption">
-              <p class="hero__plant-kicker">From Australian sugarcane</p>
-              <p class="hero__plant-title">Virgin fibre, refined for the microbiome</p>
-              <p class="hero__plant-meta">
-                Fibre starts with the cane — the same plant story told across
-                <a href="https://hfsym.com.au" rel="noopener noreferrer" class="hero__plant-link">Health Food Symmetry</a>
-                and PureBiome: crop-first, transparent, Australian.
-              </p>
-            </div>
-          </div>
-          <div class="hero__floating-card">
-            <p class="hero__card-label">Daily ritual</p>
-            <p class="hero__card-title">Prebiotic fibre that fits real life</p>
-            <p class="hero__card-meta">Sachets · tubs · dietitian-informed Pro line</p>
+        <div class="hero__visual hero__visual--media">
+          <figure class="hero__media-frame">
+            <img
+              id="hero-media-image"
+              class="hero__img hero__img--stage"
+              src="images/hero-essential-studio.png"
+              onerror="this.onerror=null;this.src='images/range-essential-card.png';"
+              width="1200"
+              height="900"
+              alt="PureBiome Essential prebiotic fibre range staged in a clean studio setting"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </figure>
+          <div class="hero__proof-card">
+            <p class="hero__card-label" id="hero-proof-label">Built for results and consistency</p>
+            <p class="hero__card-title" id="hero-proof-title">One daily ritual. Cleaner digestion. Better routine adherence.</p>
+            <p class="hero__card-meta" id="hero-proof-meta">Essential tubs and sachets, with Pro options for targeted support.</p>
           </div>
         </div>
       </div>
@@ -420,6 +396,13 @@
         <div class="cta-band__actions">
           <button type="button" class="btn btn--primary btn--on-dark" data-open-checkout>Buy now</button>
           <a href="mailto:hello@purebio.me" class="btn btn--outline btn--on-dark-outline">hello@purebio.me</a>
+          <label class="hero-mode" for="hero-mode-select">
+            Hero style
+            <select id="hero-mode-select" class="hero-mode__select" data-hero-mode-select>
+              <option value="a" selected>A — Clean product authority</option>
+              <option value="c">C — Product motion concept</option>
+            </select>
+          </label>
           <p class="cta-note">Campaign UTM parameters are preserved when possible.</p>
         </div>
       </div>

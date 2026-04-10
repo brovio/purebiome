@@ -339,6 +339,56 @@
     });
   }
 
+  /* —— Hero style selector (A / C) —— */
+  function initHeroModeSelector() {
+    var select = document.querySelector("[data-hero-mode-select]");
+    var heroImg = document.getElementById("hero-media-image");
+    var proofLabel = document.getElementById("hero-proof-label");
+    var proofTitle = document.getElementById("hero-proof-title");
+    var proofMeta = document.getElementById("hero-proof-meta");
+
+    if (!select || !heroImg) return;
+
+    var variants = {
+      a: {
+        src: "images/hero-essential-studio.png",
+        fallback: "images/range-essential-card.png",
+        alt: "PureBiome Essential prebiotic fibre range staged in a clean studio setting",
+        label: "Built for results and consistency",
+        title: "One daily ritual. Cleaner digestion. Better routine adherence.",
+        meta: "Essential tubs and sachets, with Pro options for targeted support.",
+      },
+      c: {
+        src: "images/photo-tub-clean.png",
+        fallback: "images/range-pro-card.png",
+        alt: "PureBiome product concept with clean motion-style visual treatment",
+        label: "Product motion concept",
+        title: "A dynamic visual option for testing engagement above the fold.",
+        meta: "Use this mode for A/B testing while retaining premium, clinical styling.",
+      },
+    };
+
+    function applyVariant(key) {
+      var id = variants[key] ? key : "a";
+      var variant = variants[id];
+      heroImg.onerror = function () {
+        this.onerror = null;
+        this.src = variant.fallback;
+      };
+      heroImg.src = variant.src;
+      heroImg.alt = variant.alt;
+      if (proofLabel) proofLabel.textContent = variant.label;
+      if (proofTitle) proofTitle.textContent = variant.title;
+      if (proofMeta) proofMeta.textContent = variant.meta;
+    }
+
+    select.addEventListener("change", function () {
+      applyVariant(select.value);
+    });
+
+    applyVariant(select.value || "a");
+  }
+
   /* —— GEO bar —— */
   var GEO_ALT = {
     IE: { code: "GB", name: "United Kingdom" },
@@ -439,6 +489,7 @@
   captureCampaignParams();
   bindRegionControls();
   setRegion(getInitialRegion());
+  initHeroModeSelector();
   initGeoBar();
 
   window.PUREBIO = PUREBIO;
