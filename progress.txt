@@ -28,3 +28,94 @@ Things I can't finish without you
 
 What I did tonight (most recent first)
 ======================================
+
+--- Stripe + Redis + infra config ---
+* services/medusa/medusa-config.ts: conditionally loads @medusajs/payment-stripe
+  provider when STRIPE_API_KEY is present; conditionally wires cache-redis +
+  event-bus-redis + workflow-engine-redis when REDIS_URL + NODE_ENV=production.
+  No-op locally without those env vars → no crash, no behaviour change.
+* Added @medusajs/payment-stripe@2.13.6 as a Medusa dep.
+* Env placeholders already in services/medusa/.env and
+  apps/storefront/.env.local (NEXT_PUBLIC_STRIPE_KEY).
+* To go live: paste real keys, restart, done.
+
+--- Playwright e2e smoke tests (tests/e2e/storefront.spec.ts) ---
+* 6 tests, all passing against the local dev stack in ~10s:
+    - homepage renders the V1 narrative
+    - store listing shows all 4 seeded products
+    - PDP shows variant picker and PureBiome tabs
+    - cart shows empty state when opened cold
+    - add-to-cart from PDP increments cart count (FULL END-TO-END)
+    - GeoBar is region-aware on /au
+* Root scripts: `pnpm e2e:install` (one-time, downloads chromium) then `pnpm e2e`.
+* Configured in playwright.config.ts. Reports to playwright-report/.
+
+--- docs/DEPLOY.md ---
+* Full playbook: Vercel (storefront) + Railway (Medusa + Postgres + Redis)
+  + Cloudflare DNS cutover + S3/R2 images + Stripe webhooks.
+* Env variable matrix for both platforms.
+* Zero-downtime DNS cutover procedure with rollback instructions.
+* Post-deploy smoke test checklist.
+
+--- Storefront polish (store, cart dropdown, side menu) ---
+* /store: hero block ('Every tub we make.') in Fraunces + bone bg.
+* Cart dropdown: cane hover, PureBiome CTAs, rounded-full buttons.
+* Side menu: ink-bg rounded-2xl panel, Fraunces menu items (Shop/Essential/Pro/
+  Account/Cart), Brisbane footer, culture wordmark.
+
+--- V1 landing narrative at /[countryCode]/ ---
+9 sections composed in apps/storefront/src/app/[countryCode]/(main)/page.tsx:
+* Hero
+* PromiseStrip (12 strains / 10B CFU / 100% AU / 7s ritual)
+* Problem ('you've tried the podcast's favourite')
+* Formula (sugar cane prebiotic + 12 strains + nothing else, educational)
+* Ritual (scoop/stir/swallow, 3-step cards)
+* HomeProductGrid (all 4 seeded products)
+* Science (Monash / TGA / RCT / ISO credentials)
+* Testimonials (3 placeholder reviews, easy to swap real ones)
+* Faq (client-side accordion, 6 purchase-blocking questions)
+* FinalCta (culture-green band, dominant CTA)
+
+--- PDP rebrand (/[countryCode]/products/[handle]) ---
+* ProductInfo: Fraunces h1, category pill, subtitle, richer description.
+* ProductTabs: 'Full ingredients & facts' (12 strains by name + code),
+  'How to use' (5g scoop protocol), 'Shipping & returns' (region-aware).
+* ProductActions: native PureBiome button (ink/bone/cane) replaces @medusajs/ui Button.
+
+--- Original step 4: nav/footer/hero/GeoBar ---
+(see first commit 63c3299..)
+
+--- Original step 3b: @purebiome/tokens wired into storefront ---
+(see commit 2483141..f4d6dc1)
+
+--- Original step 2a: Medusa v2 + seed ---
+(see first commit on branch)
+
+Branch status at end of run
+===========================
+Branch:  feature/purebio-me-marketing-preview
+Commits: ~5 small, semantic commits pushed to origin.
+CI:      none configured yet — add GitHub Actions with `pnpm e2e` once you
+         have a preview environment.
+
+When you resume
+===============
+1. Pull latest on the branch.
+2. `pnpm infra:up` (docker postgres + redis).
+3. `pnpm dev` (medusa on :9000, storefront on :8000).
+4. Visit http://localhost:8000 → review V1 landing.
+5. Visit http://localhost:9000/app → register first admin user.
+6. Decide: rebrand more (admin, checkout, account) or deploy to staging first?
+
+Options for next session, ranked by leverage
+============================================
+1. V3 landing at /v3 (LMNT-blunt variant) — 2-3 hours. I left the components
+   modular so V3 can reuse Hero / PromiseStrip / Formula with different copy + layout.
+2. Real product photography upload to R2 + update seed image URLs.
+3. Checkout page rebrand (currently still starter-styled) + Stripe Elements
+   theming — requires real Stripe test keys so we can click through the
+   Payment step end-to-end.
+4. Account pages rebrand (/account, /account/orders, etc).
+5. GitHub Actions CI pipeline: lint + typecheck + e2e on every PR.
+6. Deploy to Railway staging → test pnpm e2e against the staging URL.
+

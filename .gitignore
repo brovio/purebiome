@@ -34,3 +34,8 @@ infra/data/
 
 # coverage
 coverage/
+
+# playwright
+test-results/
+playwright-report/
+playwright/.cache/

@@ -1,0 +1,107 @@
+import { test, expect } from "@playwright/test"
+
+/**
+ * Smoke tests for the PureBiome storefront.
+ *
+ * These are intentionally shallow — the point is to catch big regressions
+ * (500s, missing copy, broken add-to-cart) rather than pixel-perfect QA.
+ * Pair with manual review on the /au preview for anything visual.
+ */
+
+test.describe("PureBiome storefront smoke suite", () => {
+  test("homepage renders the V1 narrative", async ({ page }) => {
+    await page.goto("/au")
+    await expect(page).toHaveTitle(/PureBiome/)
+
+    // Hero
+    await expect(
+      page.getByRole("heading", { name: /your gut,/i, level: 1 })
+    ).toBeVisible()
+    await expect(
+      page.getByRole("link", { name: /start the ritual/i }).first()
+    ).toBeVisible()
+
+    // Narrative sections
+    await expect(page.getByText(/Twelve live strains/i).first()).toBeVisible()
+    await expect(
+      page.getByText(/Low FODMAP certified/i).first()
+    ).toBeVisible()
+
+    // At least one product card from the seed
+    await expect(
+      page
+        .locator('[data-testid="products-grid"] [data-testid="product-title"]')
+        .first()
+    ).toBeVisible()
+  })
+
+  test("store listing shows all 4 seeded products", async ({ page }) => {
+    await page.goto("/au/store")
+    await expect(
+      page.getByRole("heading", { name: /every tub we make/i })
+    ).toBeVisible()
+
+    const titles = await page
+      .locator('[data-testid="product-title"]')
+      .allInnerTexts()
+    expect(titles).toEqual(
+      expect.arrayContaining([
+        expect.stringMatching(/Essential Tub/i),
+        expect.stringMatching(/Essential Sachets/i),
+        expect.stringMatching(/Calm/i),
+        expect.stringMatching(/Flow/i),
+      ])
+    )
+  })
+
+  test("PDP shows variant picker and PureBiome tabs", async ({ page }) => {
+    await page.goto("/au/products/essential-tub")
+    await expect(
+      page.getByTestId("product-title").filter({ hasText: /Essential Tub/i })
+    ).toBeVisible()
+
+    // Variant picker
+    await expect(page.getByRole("button", { name: "Neutral" })).toBeVisible()
+    await expect(page.getByRole("button", { name: "Berry" })).toBeVisible()
+    await expect(page.getByRole("button", { name: "Citrus" })).toBeVisible()
+
+    // Tabs (use .first() because the footer may also contain some of these strings)
+    await expect(page.getByText("Full ingredients & facts").first()).toBeVisible()
+    await expect(page.getByText("How to use").first()).toBeVisible()
+    await expect(page.getByText("Shipping & returns").first()).toBeVisible()
+  })
+
+  test("cart shows empty state when opened cold", async ({ page }) => {
+    await page.goto("/au/cart")
+    await expect(page.getByText(/cart/i).first()).toBeVisible()
+  })
+
+  test("add-to-cart from PDP increments cart count", async ({ page }) => {
+    await page.goto("/au/products/essential-tub")
+
+    // Select a variant (required before add works)
+    await page.getByRole("button", { name: "Berry" }).click()
+
+    const cartLink = page.getByTestId("nav-cart-link")
+    const before = (await cartLink.textContent()) ?? ""
+
+    await page.getByTestId("add-product-button").click()
+
+    // Wait for the cart count to change from Cart (0) → Cart (n > 0).
+    await expect
+      .poll(async () => (await cartLink.textContent()) ?? "", {
+        timeout: 15_000,
+      })
+      .not.toBe(before)
+
+    const after = (await cartLink.textContent()) ?? ""
+    expect(after).toMatch(/Cart \(\d+\)/)
+    expect(after).not.toMatch(/Cart \(0\)/)
+  })
+
+  test("GeoBar is region-aware on /au", async ({ page }) => {
+    await page.goto("/au")
+    await expect(page.getByText(/Australia/).first()).toBeVisible()
+    await expect(page.getByText(/A\$99/).first()).toBeVisible()
+  })
+})
