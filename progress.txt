@@ -1,0 +1,30 @@
+PureBiome migration — autonomous overnight run
+================================================
+Started:  2026-04-23 03:15 AEST (you went to bed, said "go nuts, polish, test")
+Branch:   feature/purebio-me-marketing-preview
+Approach: small, frequent commits so you can review or revert any chunk.
+
+What the user needs to do when you wake up
+==========================================
+1. Click into Docker Desktop → Postgres + Redis should still be running.
+   If not: `pnpm infra:up`
+2. Start the stack: `pnpm dev` (runs Medusa + storefront together)
+3. Visit http://localhost:8000 — storefront
+4. Visit http://localhost:9000/app — Medusa admin (register first user)
+5. Review the progress log below and the commits on this branch.
+
+Things I can't finish without you
+=================================
+- [ ] Stripe: I've scaffolded the module + env placeholders but real
+      STRIPE_API_KEY + STRIPE_WEBHOOK_SECRET need your account.
+      See `services/medusa/.env` and `apps/storefront/.env.local` for TODO markers.
+- [ ] Deployment: I've written `docs/DEPLOY.md` with step-by-step for
+      Vercel (storefront) + Railway (Medusa+Postgres+Redis) + DNS cutover,
+      but the actual button-clicks need your accounts. DNS for purebio.me
+      stays on the static preview until you flip it.
+- [ ] Real product photography — we're using purebio.me/images/*.png from
+      the live static site. Works fine for local; for production you'll
+      want to upload to S3/R2 and update the seed.
+
+What I did tonight (most recent first)
+======================================

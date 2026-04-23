@@ -306,9 +306,19 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
   await linkSalesChannelsToApiKeyWorkflow(container).run({
     input: { id: publishableApiKey.id, add: [defaultSalesChannel[0].id] },
   });
+  // Re-fetch with the token field (not returned by default on create).
+  const {
+    data: [keyWithToken],
+  } = await query.graph({
+    entity: "api_key",
+    fields: ["id", "token"],
+    filters: { id: publishableApiKey.id },
+  });
   logger.info(
-    `Publishable API key ready — paste this into apps/storefront/.env.local as NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: ${publishableApiKey.id}`
+    `Publishable API key ready — paste the TOKEN (not the id) into apps/storefront/.env.local as NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY:`
   );
+  logger.info(`  id:    ${keyWithToken.id}`);
+  logger.info(`  token: ${keyWithToken.token}`);
 
   // Categories --------------------------------------------------------------
   logger.info("Seeding product categories...");

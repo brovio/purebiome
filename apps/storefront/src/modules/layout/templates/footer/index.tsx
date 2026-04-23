@@ -1,155 +1,109 @@
 import { listCategories } from "@lib/data/categories"
-import { listCollections } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
-
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
 
+/**
+ * PureBiome site footer.
+ * 4-column layout on desktop, stacked on mobile:
+ *   - Wordmark + ethos line
+ *   - Shop (pulled from seeded categories)
+ *   - Science & Story (static links)
+ *   - Company / Legal
+ * Bottom strip: © year, Australian-made mark, Monash Low FODMAP line.
+ */
 export default async function Footer() {
-  const { collections } = await listCollections({
-    fields: "*products",
-  })
   const productCategories = await listCategories()
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
-            <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-            >
-              Medusa Store
-            </LocalizedClientLink>
-          </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-            {productCategories && productCategories?.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Categories
-                </span>
-                <ul
-                  className="grid grid-cols-1 gap-2"
-                  data-testid="footer-categories"
-                >
-                  {productCategories?.slice(0, 6).map((c) => {
-                    if (c.parent_category) {
-                      return
-                    }
-
-                    const children =
-                      c.category_children?.map((child) => ({
-                        name: child.name,
-                        handle: child.handle,
-                        id: child.id,
-                      })) || null
-
-                    return (
-                      <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
-                        key={c.id}
-                      >
-                        <LocalizedClientLink
-                          className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
-                          )}
-                          href={`/categories/${c.handle}`}
-                          data-testid="category-link"
-                        >
-                          {c.name}
-                        </LocalizedClientLink>
-                        {children && (
-                          <ul className="grid grid-cols-1 ml-3 gap-2">
-                            {children &&
-                              children.map((child) => (
-                                <li key={child.id}>
-                                  <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
-                                    href={`/categories/${child.handle}`}
-                                    data-testid="category-link"
-                                  >
-                                    {child.name}
-                                  </LocalizedClientLink>
-                                </li>
-                              ))}
-                          </ul>
-                        )}
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-            {collections && collections.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Collections
-                </span>
-                <ul
-                  className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
-                    {
-                      "grid-cols-2": (collections?.length || 0) > 3,
-                    }
-                  )}
-                >
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </LocalizedClientLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <footer className="bg-ink text-bone w-full">
+      <div className="content-container grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 py-20">
+        {/* Brand + ethos */}
+        <div className="md:col-span-4 flex flex-col gap-4">
+          <LocalizedClientLink
+            href="/"
+            className="font-display text-3xl text-bone hover:text-culture transition-colors"
+          >
+            PureBiome
+          </LocalizedClientLink>
+          <p className="text-sm text-bone/70 leading-relaxed max-w-sm">
+            One daily ritual. Twelve living strains. Australian sugar cane,
+            re-sourced for your microbiome — and nothing else you don't need.
+          </p>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
-          </Text>
-          <MedusaCTA />
+
+        {/* Shop */}
+        <div className="md:col-span-2 flex flex-col gap-3">
+          <h3 className="text-xs uppercase tracking-[0.18em] text-bone/60">
+            Shop
+          </h3>
+          <ul className="flex flex-col gap-2 text-sm text-bone/85">
+            <li>
+              <LocalizedClientLink
+                href="/store"
+                className="hover:text-culture transition-colors"
+              >
+                All products
+              </LocalizedClientLink>
+            </li>
+            {productCategories?.slice(0, 4).map((c) =>
+              c.parent_category ? null : (
+                <li key={c.id}>
+                  <LocalizedClientLink
+                    href={`/categories/${c.handle}`}
+                    className="hover:text-culture transition-colors"
+                  >
+                    {c.name}
+                  </LocalizedClientLink>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+
+        {/* Science & Story */}
+        <div className="md:col-span-3 flex flex-col gap-3">
+          <h3 className="text-xs uppercase tracking-[0.18em] text-bone/60">
+            Science &amp; Story
+          </h3>
+          <ul className="flex flex-col gap-2 text-sm text-bone/85">
+            <li>Our strains</li>
+            <li>Sugar-cane prebiotic</li>
+            <li>Clinical evidence</li>
+            <li>Journal</li>
+          </ul>
+        </div>
+
+        {/* Company */}
+        <div className="md:col-span-3 flex flex-col gap-3">
+          <h3 className="text-xs uppercase tracking-[0.18em] text-bone/60">
+            Company
+          </h3>
+          <ul className="flex flex-col gap-2 text-sm text-bone/85">
+            <li>
+              <LocalizedClientLink
+                href="/account"
+                className="hover:text-culture transition-colors"
+              >
+                My account
+              </LocalizedClientLink>
+            </li>
+            <li>Contact</li>
+            <li>Shipping &amp; returns</li>
+            <li>Privacy</li>
+            <li>Terms</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bottom strip */}
+      <div className="border-t border-bone/10">
+        <div className="content-container flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6 text-xs text-bone/60">
+          <span>
+            © {new Date().getFullYear()} PureBiome. Made in Brisbane,
+            Australia.
+          </span>
+          <span className="uppercase tracking-[0.14em]">
+            Monash Low FODMAP certified · Gluten &amp; dairy free · TGA listed
+          </span>
         </div>
       </div>
     </footer>

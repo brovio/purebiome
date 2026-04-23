@@ -8,6 +8,12 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 
+/**
+ * PureBiome site navigation.
+ * - Mobile: hamburger (SideMenu) + wordmark + cart
+ * - Desktop: wordmark left, primary links centre-ish, account + cart right
+ * - Colours: bone background, ink text, cane for active/hover.
+ */
 export default async function Nav() {
   const [regions, locales, currentLocale] = await Promise.all([
     listRegions().then((regions: StoreRegion[]) => regions),
@@ -17,38 +23,76 @@ export default async function Nav() {
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
-          <div className="flex-1 basis-0 h-full flex items-center">
-            <div className="h-full">
-              <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
+      <header className="relative h-16 mx-auto border-b duration-200 bg-bone border-ink/10">
+        <nav className="content-container flex items-center justify-between w-full h-full text-sm">
+          {/* Left: mobile menu trigger + wordmark */}
+          <div className="flex items-center gap-4 h-full">
+            <div className="small:hidden h-full flex items-center">
+              <SideMenu
+                regions={regions}
+                locales={locales}
+                currentLocale={currentLocale}
+              />
             </div>
-          </div>
-
-          <div className="flex items-center h-full">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
+              className="font-display text-2xl text-ink tracking-tight hover:text-cane transition-colors"
               data-testid="nav-store-link"
             >
-              Medusa Store
+              PureBiome
             </LocalizedClientLink>
           </div>
 
-          <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            <div className="hidden small:flex items-center gap-x-6 h-full">
+          {/* Centre: primary nav (desktop only) */}
+          <ul className="hidden small:flex items-center gap-x-8 h-full text-ink/80">
+            <li>
               <LocalizedClientLink
-                className="hover:text-ui-fg-base"
+                href="/store"
+                className="hover:text-cane transition-colors"
+              >
+                Shop
+              </LocalizedClientLink>
+            </li>
+            <li>
+              <LocalizedClientLink
+                href="/categories/essential"
+                className="hover:text-cane transition-colors"
+              >
+                Essential
+              </LocalizedClientLink>
+            </li>
+            <li>
+              <LocalizedClientLink
+                href="/categories/pro"
+                className="hover:text-cane transition-colors"
+              >
+                Pro
+              </LocalizedClientLink>
+            </li>
+            <li>
+              <LocalizedClientLink
                 href="/account"
-                data-testid="nav-account-link"
+                className="hover:text-cane transition-colors"
               >
                 Account
               </LocalizedClientLink>
+            </li>
+          </ul>
+
+          {/* Right: region pill + cart */}
+          <div className="flex items-center gap-x-4 h-full">
+            <div className="hidden small:flex h-full items-center">
+              {/* Region pill opens the side-menu drawer where the country-select lives. */}
+              <SideMenu
+                regions={regions}
+                locales={locales}
+                currentLocale={currentLocale}
+              />
             </div>
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="hover:text-ui-fg-base flex gap-2"
+                  className="text-ink hover:text-cane transition-colors"
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
