@@ -8,7 +8,6 @@ import {
 } from "@headlessui/react"
 import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
-import { Button } from "@medusajs/ui"
 import DeleteButton from "@modules/common/components/delete-button"
 import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
@@ -82,7 +81,7 @@ const CartDropdown = ({
       <Popover className="relative h-full">
         <PopoverButton className="h-full">
           <LocalizedClientLink
-            className="hover:text-ui-fg-base"
+            className="text-ink hover:text-cane transition-colors"
             href="/cart"
             data-testid="nav-cart-link"
           >{`Cart (${totalItems})`}</LocalizedClientLink>
@@ -191,33 +190,26 @@ const CartDropdown = ({
                       })}
                     </span>
                   </div>
-                  <LocalizedClientLink href="/cart" passHref>
-                    <Button
-                      className="w-full"
-                      size="large"
-                      data-testid="go-to-cart-button"
-                    >
-                      Go to cart
-                    </Button>
+                  <LocalizedClientLink
+                    href="/cart"
+                    className="w-full inline-flex items-center justify-center bg-ink text-bone rounded-full py-3 text-sm font-medium tracking-wide hover:bg-cane transition-colors"
+                    data-testid="go-to-cart-button"
+                  >
+                    Go to cart
                   </LocalizedClientLink>
                 </div>
               </>
             ) : (
-              <div>
-                <div className="flex py-16 flex-col gap-y-4 items-center justify-center">
-                  <div className="bg-gray-900 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
-                    <span>0</span>
-                  </div>
-                  <span>Your shopping bag is empty.</span>
-                  <div>
-                    <LocalizedClientLink href="/store">
-                      <>
-                        <span className="sr-only">Go to all products page</span>
-                        <Button onClick={close}>Explore products</Button>
-                      </>
-                    </LocalizedClientLink>
-                  </div>
-                </div>
+              <div className="flex py-14 flex-col gap-y-4 items-center justify-center">
+                <span className="text-ink/60">Your cart is empty.</span>
+                <LocalizedClientLink
+                  href="/store"
+                  onClick={close}
+                  className="inline-flex items-center gap-2 bg-ink text-bone px-5 py-3 rounded-full text-sm font-medium tracking-wide hover:bg-cane transition-colors"
+                >
+                  <span className="sr-only">Go to all products page</span>
+                  Shop the range
+                </LocalizedClientLink>
               </div>
             )}
           </PopoverPanel>
