@@ -36,7 +36,15 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       className={`${fontBody.variable} ${fontDisplay.variable}`}
     >
       <body>
-        <main className="relative">{props.children}</main>
+        <a
+          href="#main-content"
+          className="skip-link bg-ink text-bone px-4 py-2 rounded-full text-sm font-medium"
+        >
+          Skip to content
+        </a>
+        <main id="main-content" className="relative">
+          {props.children}
+        </main>
       </body>
     </html>
   )

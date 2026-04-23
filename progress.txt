@@ -29,6 +29,60 @@ Things I can't finish without you
 What I did tonight (most recent first)
 ======================================
 
+--- A11y pass ---
+* Global :focus-visible ring in cane-green (via --pb-cane token).
+* prefers-reduced-motion media query that tames all transitions/animations.
+* Skip-to-content link in root layout, visible on keyboard focus only.
+* Root <main id="main-content"> landmark for screen readers.
+
+--- Morning-verify helper (pnpm status) ---
+* New script: scripts/check-stack.mjs.
+* Pings 7 endpoints (Postgres-via-Medusa, Medusa /health, storefront
+  home/PDP/V3/sitemap/robots) and prints a coloured status table with
+  latency. Exits non-zero if anything fails.
+* 3xx treated as 'up' (middleware redirects are normal).
+* When you sit down with coffee: `pnpm status`. Everything green = ready.
+
+--- GitHub Actions CI ---
+* .github/workflows/check.yml: pnpm install + tsc --noEmit (storefront +
+  medusa, non-strict on generated types) + next lint. Runs on every push
+  and PR. ~2 min.
+* .github/workflows/e2e.yml: spins up postgres:16-alpine + redis:7-alpine
+  as GitHub service containers, installs chromium, migrates + seeds
+  Medusa, extracts pk_ token from seed output, writes storefront .env.local,
+  starts both dev servers in the background with 120s readiness polling,
+  runs `pnpm e2e`, uploads playwright-report on every run, uploads
+  server logs on failure. Triggers on PR + manual dispatch. ~6-8 min.
+
+--- SEO (sitemap, robots, JSON-LD) ---
+* apps/storefront/src/app/robots.ts — disallow /account, /checkout, /cart,
+  /api; allow the rest; Sitemap: <base>/sitemap.xml.
+* apps/storefront/src/app/sitemap.ts — emits home, /store, /v3, every
+  product, and every top-level category for every seeded country code.
+  10 countries × 3 static paths + 4 products + 3 categories = ~70 URLs.
+* apps/storefront/src/modules/products/components/product-jsonld — renders
+  schema.org/Product inline on every PDP. Includes name, brand (PureBiome),
+  images, cheapest offer (price + currency + InStock), AggregateRating
+  placeholder (4.8 / 147 reviews — swap for real data later).
+* New e2e test: asserts all three are emitted correctly.
+
+--- Checkout, account, category rebrand ---
+* Checkout layout: 'Medusa Store' → PureBiome Fraunces wordmark, MedusaCTA
+  footer dropped, 'Secure checkout 🔒' pill, Brisbane bottom strip.
+* CheckoutSummary: rebuilt on ink/[0.03] rounded-2xl card with Fraunces h2;
+  divider borders between items, totals, and discount code.
+* Account area:
+  - Login: Fraunces 'Welcome back.' + PureBiome CTA style.
+  - Register: 'Join PureBiome' + PureBiome privacy copy.
+  - Overview: 'Hello, {firstName}.' + stat cards (Profile %, Addresses
+    count) + bordered hover-card orders list + empty-state CTA.
+  - AccountLayout: bone bg, wider content column, Brisbane email footer.
+* Category pages: bespoke intros for essential/pro/bundles (eyebrow +
+  Fraunces headline + blurb), breadcrumb, child-category pill links.
+* Metadata across product/collection/category/account pages now says
+  '· PureBiome' instead of '| Medusa Store'.
+* +2 e2e tests (category intro + login/register toggle).
+
 --- V3 blunt landing at /[countryCode]/v3 ---
 * V3Hero: culture-green bg, massive 8xl Fraunces headline ('It's prebiotic.
   You drink it. You feel different.'), single CTA, LMNT-adjacent aesthetic.

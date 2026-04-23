@@ -2,7 +2,42 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer base {
+  /* Accessibility: keyboard focus ring using the brand palette.
+     Hidden for mouse users (`:focus-visible` rule only). */
+  :focus-visible {
+    outline: 2px solid var(--pb-cane);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respect users who've asked the OS for reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
 @layer utilities {
+  /* Skip-to-content anchor — visible on keyboard focus, hidden otherwise. */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    transform: translateY(-200%);
+    transition: transform 150ms ease-out;
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

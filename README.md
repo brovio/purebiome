@@ -63,9 +63,11 @@ pnpm dev                 # runs storefront (:8000) + medusa (:9000) in parallel
 - [ ] **Step 8** — deploy. See [`docs/DEPLOY.md`](docs/DEPLOY.md) for the Vercel + Railway + Cloudflare playbook.
 - [ ] **Step 9** — archive the static preview below into `archive/`.
 
-### Tests
+### Tests & CI
 
-`pnpm e2e:install` once, then `pnpm e2e` runs a 7-test Playwright smoke suite in ~13s: V1 narrative, store listing, PDP tabs + variants, cart empty, **full add-to-cart end-to-end**, GeoBar region awareness, V3 page.
+- `pnpm e2e:install` once, then `pnpm e2e` runs a **10-test** Playwright smoke suite in ~18s: V1 narrative, store listing, PDP tabs + variants, cart empty, **full add-to-cart end-to-end**, GeoBar region awareness, category page, login/register toggle, robots + sitemap + Product JSON-LD, V3 page.
+- `pnpm status` — morning sanity check. Pings Postgres, Medusa, and every key storefront route; prints a coloured table with latency. Safe and read-only.
+- **GitHub Actions** — `.github/workflows/check.yml` (install + typecheck + lint on every push/PR, ~2 min) and `.github/workflows/e2e.yml` (full stack with postgres + redis services + Playwright, ~6-8 min on every PR to `main`).
 
 ---
 
