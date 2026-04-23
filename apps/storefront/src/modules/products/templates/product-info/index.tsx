@@ -1,5 +1,4 @@
 import { HttpTypes } from "@medusajs/types"
-import { Heading, Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type ProductInfoProps = {
@@ -7,31 +6,34 @@ type ProductInfoProps = {
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
+  const primaryCategory = product.categories?.[0]
+
   return (
     <div id="product-info">
-      <div className="flex flex-col gap-y-4 lg:max-w-[500px] mx-auto">
-        {product.collection && (
+      <div className="flex flex-col gap-y-5 lg:max-w-[500px] mx-auto">
+        {primaryCategory && (
           <LocalizedClientLink
-            href={`/collections/${product.collection.handle}`}
-            className="text-medium text-ui-fg-muted hover:text-ui-fg-subtle"
+            href={`/categories/${primaryCategory.handle}`}
+            className="text-xs uppercase tracking-[0.2em] text-cane hover:text-ink transition-colors"
           >
-            {product.collection.title}
+            {primaryCategory.name}
           </LocalizedClientLink>
         )}
-        <Heading
-          level="h2"
-          className="text-3xl leading-10 text-ui-fg-base"
+        <h1
+          className="font-display text-4xl md:text-5xl leading-[1.05] text-ink"
           data-testid="product-title"
         >
           {product.title}
-        </Heading>
-
-        <Text
-          className="text-medium text-ui-fg-subtle whitespace-pre-line"
+        </h1>
+        {product.subtitle && (
+          <p className="text-lg text-cane/90 font-medium">{product.subtitle}</p>
+        )}
+        <p
+          className="text-ink/75 whitespace-pre-line leading-relaxed"
           data-testid="product-description"
         >
           {product.description}
-        </Text>
+        </p>
       </div>
     </div>
   )

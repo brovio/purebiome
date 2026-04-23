@@ -3,7 +3,6 @@
 import { addToCart } from "@lib/data/cart"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
-import { Button } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
 import { isEqual } from "lodash"
@@ -162,7 +161,8 @@ export default function ProductActions({
 
         <ProductPrice product={product} variant={selectedVariant} />
 
-        <Button
+        <button
+          type="button"
           onClick={handleAddToCart}
           disabled={
             !inStock ||
@@ -171,17 +171,20 @@ export default function ProductActions({
             isAdding ||
             !isValidVariant
           }
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
+          className="w-full inline-flex items-center justify-center gap-2 bg-ink text-bone px-6 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-cane transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           data-testid="add-product-button"
         >
+          {isAdding ? (
+            <span className="inline-block h-4 w-4 rounded-full border-2 border-bone/40 border-t-bone animate-spin" />
+          ) : null}
           {!selectedVariant && !options
             ? "Select variant"
             : !inStock || !isValidVariant
             ? "Out of stock"
+            : isAdding
+            ? "Adding…"
             : "Add to cart"}
-        </Button>
+        </button>
         <MobileActions
           product={product}
           variant={selectedVariant}
