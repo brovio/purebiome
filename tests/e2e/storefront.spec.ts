@@ -105,6 +105,30 @@ test.describe("PureBiome storefront smoke suite", () => {
     await expect(page.getByText(/A\$99/).first()).toBeVisible()
   })
 
+  test("category page shows branded intro and products", async ({ page }) => {
+    await page.goto("/au/categories/essential")
+    await expect(
+      page.getByRole("heading", { name: /Essential\./i })
+    ).toBeVisible()
+    await expect(page.getByText(/Your daily foundation/i)).toBeVisible()
+    await expect(
+      page.locator('[data-testid="product-title"]').first()
+    ).toBeVisible()
+  })
+
+  test("login page shows PureBiome welcome copy", async ({ page }) => {
+    await page.goto("/au/account")
+    await expect(
+      page.getByRole("heading", { name: /welcome back/i })
+    ).toBeVisible()
+    await expect(page.getByTestId("email-input").first()).toBeVisible()
+    // Switch to register view
+    await page.getByTestId("register-button").click()
+    await expect(
+      page.getByRole("heading", { name: /join purebiome/i })
+    ).toBeVisible()
+  })
+
   test("V3 landing at /au/v3 renders the blunt variant", async ({ page }) => {
     await page.goto("/au/v3")
     await expect(page.getByText(/You drink it/i)).toBeVisible()
