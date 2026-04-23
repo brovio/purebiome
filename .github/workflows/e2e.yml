@@ -1,0 +1,155 @@
+name: e2e
+
+# Full-stack Playwright run on every PR to main.
+# Spins up Postgres + Redis as GitHub-hosted services, migrates + seeds
+# Medusa, starts the storefront, and runs the smoke suite against it.
+#
+# Typical run: ~6-8 minutes. Uses GitHub's ubuntu-latest runner.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: medusa
+          POSTGRES_PASSWORD: medusa
+          POSTGRES_DB: medusa
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U medusa -d medusa"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      NODE_ENV: development
+      DATABASE_URL: postgres://medusa:medusa@localhost:5432/medusa
+      REDIS_URL: redis://localhost:6379
+      STORE_CORS: http://localhost:8000
+      ADMIN_CORS: http://localhost:9000
+      AUTH_CORS: http://localhost:8000,http://localhost:9000
+      JWT_SECRET: ci-jwt-secret
+      COOKIE_SECRET: ci-cookie-secret
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run Medusa migrations
+        run: pnpm medusa:migrate
+
+      - name: Seed PureBiome data
+        run: pnpm medusa:seed | tee seed.log
+
+      - name: Extract publishable API key token
+        id: pk
+        run: |
+          # Seed script logs both the id and the token; we want the token (pk_...).
+          TOKEN=$(grep -Eo 'pk_[a-f0-9]{64}' seed.log | head -n1)
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Could not extract publishable key token from seed output"
+            exit 1
+          fi
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Write storefront env
+        run: |
+          cat > apps/storefront/.env.local <<EOF
+          MEDUSA_BACKEND_URL=http://localhost:9000
+          NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
+          NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=${{ steps.pk.outputs.token }}
+          NEXT_PUBLIC_BASE_URL=http://localhost:8000
+          NEXT_PUBLIC_DEFAULT_REGION=au
+          NEXT_PUBLIC_STRIPE_KEY=
+          EOF
+
+      - name: Start Medusa (background)
+        run: |
+          pnpm dev:medusa > medusa.log 2>&1 &
+          echo $! > medusa.pid
+          # Wait up to 120s for :9000 to be ready.
+          for i in $(seq 1 60); do
+            if curl -sSf http://localhost:9000/store/regions -H "x-publishable-api-key: ${{ steps.pk.outputs.token }}" > /dev/null 2>&1; then
+              echo "Medusa ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::Medusa failed to start in 120s"
+          tail -n 200 medusa.log
+          exit 1
+
+      - name: Start storefront (background)
+        run: |
+          pnpm dev:storefront > storefront.log 2>&1 &
+          echo $! > storefront.pid
+          # Wait up to 120s for :8000 to compile.
+          for i in $(seq 1 60); do
+            if curl -sSf -o /dev/null http://localhost:8000/au; then
+              echo "Storefront ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::Storefront failed to start in 120s"
+          tail -n 200 storefront.log
+          exit 1
+
+      - name: Run Playwright
+        run: pnpm e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Upload server logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-logs
+          path: |
+            medusa.log
+            storefront.log
+          retention-days: 7

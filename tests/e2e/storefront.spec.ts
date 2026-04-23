@@ -129,6 +129,36 @@ test.describe("PureBiome storefront smoke suite", () => {
     ).toBeVisible()
   })
 
+  test("robots.txt + sitemap.xml + product JSON-LD are emitted", async ({
+    page,
+    request,
+  }) => {
+    const robots = await request.get("/robots.txt")
+    expect(robots.ok()).toBeTruthy()
+    const robotsBody = await robots.text()
+    expect(robotsBody).toMatch(/Disallow: \/checkout/)
+    expect(robotsBody).toMatch(/Sitemap:/)
+
+    const sitemap = await request.get("/sitemap.xml")
+    expect(sitemap.ok()).toBeTruthy()
+    const sitemapBody = await sitemap.text()
+    expect(sitemapBody).toMatch(/<loc>.*\/au<\/loc>/)
+    expect(sitemapBody).toMatch(/\/au\/products\/essential-tub/)
+
+    // JSON-LD on the PDP — grep the rendered HTML directly so we match the
+    // server-rendered <script> tag regardless of DOM hydration timing.
+    await page.goto("/au/products/essential-tub")
+    const html = await page.content()
+    const match = html.match(
+      /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/
+    )
+    expect(match, "expected a <script type='application/ld+json'> in the PDP").toBeTruthy()
+    const parsed = JSON.parse(match![1])
+    expect(parsed["@type"]).toBe("Product")
+    expect(parsed.brand?.name).toBe("PureBiome")
+    expect(parsed.offers?.priceCurrency).toBe("AUD")
+  })
+
   test("V3 landing at /au/v3 renders the blunt variant", async ({ page }) => {
     await page.goto("/au/v3")
     await expect(page.getByText(/You drink it/i)).toBeVisible()
