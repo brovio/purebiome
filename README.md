@@ -55,13 +55,17 @@ pnpm dev                 # runs storefront (:8000) + medusa (:9000) in parallel
 - [ ] **Step 2b** — boot Postgres/Redis (`pnpm infra:up`), run migrations + seed products. *Requires Docker Desktop running.*
 - [x] **Step 3a** — Medusa Next.js starter installed at `apps/storefront` (includes cart, regions, checkout, Stripe Elements scaffolding out of the box).
 - [x] **Step 3b** — `@purebiome/tokens` wired in root layout, Fraunces + Inter loaded via `next/font`, Tailwind extended with brand palette (`bg-cane`, `text-bone`, `bg-culture`, …) and `font-display`.
-- [x] **Seed** — `services/medusa/src/scripts/seed.ts` rewritten for PureBiome: AU + International regions (AUD/USD/NZD), Brisbane stock location, 4 products (Essential Tub, Essential Sachets, Calm, Flow) with real variants and pricing. *Runs once Postgres is up.*
-- [ ] **Step 4** — ship shared components (`Nav`, `GeoBar`, `Footer`) into `packages/ui`.
-- [ ] **Step 5** — V1 (AG1 Foundational) landing at `/`.
-- [ ] **Step 6** — Stripe Elements checkout end-to-end.
-- [ ] **Step 7** — V3 (LMNT blunt) landing at `/v3`.
-- [ ] **Step 8** — deploy to Vercel + Railway, point `purebio.me` DNS.
+- [x] **Seed** — `services/medusa/src/scripts/seed.ts`: AU + International regions (AUD/USD/NZD), Brisbane stock location, 4 products (Essential Tub, Essential Sachets, Calm, Flow) with real variants and pricing.
+- [x] **Step 4** — PureBiome Nav, GeoBar, Footer live directly in `apps/storefront/src/modules/layout/` (extraction into `@purebiome/ui` deferred until V3 drives shared primitive design).
+- [x] **Step 5** — V1 (AG1-style) landing at `/[countryCode]/` — 9 composable sections: Hero, PromiseStrip, Problem, Formula, Ritual, HomeProductGrid, Science, Testimonials, Faq, FinalCta.
+- [~] **Step 6** — Stripe module conditionally wired in `medusa-config.ts` (loads when `STRIPE_API_KEY` is set). Checkout pages still use starter chrome until real test keys are pasted and Stripe Elements can be theme-tested end-to-end.
+- [x] **Step 7** — V3 (LMNT-blunt) landing at `/[countryCode]/v3`.
+- [ ] **Step 8** — deploy. See [`docs/DEPLOY.md`](docs/DEPLOY.md) for the Vercel + Railway + Cloudflare playbook.
 - [ ] **Step 9** — archive the static preview below into `archive/`.
+
+### Tests
+
+`pnpm e2e:install` once, then `pnpm e2e` runs a 7-test Playwright smoke suite in ~13s: V1 narrative, store listing, PDP tabs + variants, cart empty, **full add-to-cart end-to-end**, GeoBar region awareness, V3 page.
 
 ---
 

@@ -29,6 +29,15 @@ Things I can't finish without you
 What I did tonight (most recent first)
 ======================================
 
+--- V3 blunt landing at /[countryCode]/v3 ---
+* V3Hero: culture-green bg, massive 8xl Fraunces headline ('It's prebiotic.
+  You drink it. You feel different.'), single CTA, LMNT-adjacent aesthetic.
+* V3Facts: data-dense stacked rows on ink bg — STRAINS / CFU / PREBIOTIC /
+  RITUAL / GUARANTEE each with a one-line proof.
+* V3Cta: huge serif final CTA, anti-subscription / anti-ambassador copy.
+* Shares the global layout (nav, geobar, footer) with V1 — only middle swaps.
+* New e2e test verifies the full page renders. 7/7 passing.
+
 --- Stripe + Redis + infra config ---
 * services/medusa/medusa-config.ts: conditionally loads @medusajs/payment-stripe
   provider when STRIPE_API_KEY is present; conditionally wires cache-redis +

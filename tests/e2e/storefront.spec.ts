@@ -104,4 +104,17 @@ test.describe("PureBiome storefront smoke suite", () => {
     await expect(page.getByText(/Australia/).first()).toBeVisible()
     await expect(page.getByText(/A\$99/).first()).toBeVisible()
   })
+
+  test("V3 landing at /au/v3 renders the blunt variant", async ({ page }) => {
+    await page.goto("/au/v3")
+    await expect(page.getByText(/You drink it/i)).toBeVisible()
+    await expect(
+      page.getByRole("link", { name: /buy the tub/i })
+    ).toBeVisible()
+    // Facts sheet
+    await expect(page.getByText(/10 billion/i)).toBeVisible()
+    await expect(page.getByText(/Queensland cane/i)).toBeVisible()
+    // Final CTA
+    await expect(page.getByText(/Buy one tub/i)).toBeVisible()
+  })
 })
