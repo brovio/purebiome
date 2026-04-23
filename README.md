@@ -1,4 +1,71 @@
-# PureBiome — purebio.me marketing preview
+# PureBiome — purebio.me
+
+This repo now contains **two things** during migration:
+
+1. The **live static marketing site** (HTML/CSS/JS at the root) — currently deployed via GitHub Pages at `purebio.me`. Keep this working until the new stack is in production.
+2. An in-progress **Next.js + Medusa monorepo** (under `apps/`, `services/`, `packages/`, `infra/`) that will replace it.
+
+---
+
+## Monorepo (in progress)
+
+Commerce-grade rebuild: React storefront + open-source headless backend. See the build spec in the project chat for full context.
+
+### Stack
+
+| Layer | Choice |
+|-------|--------|
+| Storefront | Next.js 15 (App Router) + React 19 + Tailwind (`apps/storefront`) |
+| Commerce backend | **Medusa v2** — Node/TS, MIT licensed (`services/medusa`) |
+| Database | Postgres 16 + Redis 7 (local via `infra/docker-compose.yml`) |
+| Payments | Stripe (Medusa-native provider) |
+| Shared code | `packages/tokens` (design tokens), `packages/ui` (Nav, GeoBar, CheckoutModal) |
+| Hosting (target) | Vercel (storefront) + Railway (Medusa + DB) |
+
+### Layout
+
+```
+apps/
+  storefront/            Next.js storefront — all landing variants live here as routes
+services/
+  medusa/                Medusa v2 backend + admin
+packages/
+  tokens/                design tokens (CSS vars + TS exports)
+  ui/                    shared React components
+infra/
+  docker-compose.yml     Postgres + Redis for local dev
+```
+
+### Local dev (once scaffolded)
+
+```powershell
+pnpm install
+pnpm infra:up            # starts Postgres + Redis (Docker Desktop must be running)
+pnpm dev                 # runs storefront (:8000) + medusa (:9000) in parallel
+```
+
+### Prerequisites
+
+- Node 20+ (22 works), pnpm 9 (`corepack enable pnpm`), Docker Desktop.
+
+### Migration status
+
+- [x] **Step 1** — workspace scaffolding, tokens, UI stub, docker-compose.
+- [x] **Step 2a** — scaffold `services/medusa` (Medusa v2 + admin), env + CORS wired.
+- [ ] **Step 2b** — boot Postgres/Redis (`pnpm infra:up`), run migrations + seed products. *Requires Docker Desktop running.*
+- [x] **Step 3a** — Medusa Next.js starter installed at `apps/storefront` (includes cart, regions, checkout, Stripe Elements scaffolding out of the box).
+- [x] **Step 3b** — `@purebiome/tokens` wired in root layout, Fraunces + Inter loaded via `next/font`, Tailwind extended with brand palette (`bg-cane`, `text-bone`, `bg-culture`, …) and `font-display`.
+- [x] **Seed** — `services/medusa/src/scripts/seed.ts` rewritten for PureBiome: AU + International regions (AUD/USD/NZD), Brisbane stock location, 4 products (Essential Tub, Essential Sachets, Calm, Flow) with real variants and pricing. *Runs once Postgres is up.*
+- [ ] **Step 4** — ship shared components (`Nav`, `GeoBar`, `Footer`) into `packages/ui`.
+- [ ] **Step 5** — V1 (AG1 Foundational) landing at `/`.
+- [ ] **Step 6** — Stripe Elements checkout end-to-end.
+- [ ] **Step 7** — V3 (LMNT blunt) landing at `/v3`.
+- [ ] **Step 8** — deploy to Vercel + Railway, point `purebio.me` DNS.
+- [ ] **Step 9** — archive the static preview below into `archive/`.
+
+---
+
+# PureBiome — purebio.me marketing preview (current static site)
 
 Static marketing site (HTML, CSS, vanilla JS) for **PureBiome** gut-health positioning. This repo is a **concept / preview** build, not a production storefront.
 
