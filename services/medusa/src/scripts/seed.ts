@@ -69,9 +69,10 @@ const AU_COUNTRIES = ["au"];
 const INTL_COUNTRIES = ["nz", "us", "gb", "ca", "ie", "de", "fr", "nl", "se"];
 
 // --- Product image helper ---------------------------------------------------
-// Served from the current live static site at purebio.me until we upload
-// proper assets to S3/R2 in step 8.
-const IMG = (name: string) => `https://purebio.me/images/${name}`;
+// Served from the storefront's /public/images/products folder. Good for local
+// dev + single-origin deploys; for multi-origin prod we'll swap this to an
+// R2/S3 CDN base in step 8.
+const IMG = (name: string) => `/images/products/${name}`;
 
 // --- Seed script ------------------------------------------------------------
 
@@ -363,7 +364,11 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
           weight: 320,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: IMG("photo-tub-neutral.png") }, { url: IMG("photo-tub-berry.png") }, { url: IMG("photo-tub-orange.png") }],
+          images: [
+            { url: IMG("tub-neutral.webp") },
+            { url: IMG("tub-berry.webp") },
+            { url: IMG("tub-citrus.webp") },
+          ],
           options: [{ title: "Flavour", values: ["Neutral", "Berry", "Citrus"] }],
           variants: [
             {
@@ -398,7 +403,11 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
           weight: 180,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: IMG("photo-sachets.png") }],
+          images: [
+            { url: IMG("sachets-neutral.webp") },
+            { url: IMG("sachets-berry.webp") },
+            { url: IMG("sachets-citrus.webp") },
+          ],
           options: [{ title: "Pack Size", values: ["14 sachets", "28 sachets"] }],
           variants: [
             {
@@ -427,7 +436,7 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
           weight: 320,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: IMG("photo-tub-berry.png") }],
+          images: [{ url: IMG("tub-berry.webp") }],
           options: [{ title: "Flavour", values: ["Berry"] }],
           variants: [
             {
@@ -450,7 +459,7 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
           weight: 320,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: [{ url: IMG("photo-tub-orange.png") }],
+          images: [{ url: IMG("tub-citrus.webp") }],
           options: [{ title: "Flavour", values: ["Orange"] }],
           variants: [
             {

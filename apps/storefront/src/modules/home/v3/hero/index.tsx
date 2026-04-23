@@ -37,7 +37,7 @@ export default function V3Hero() {
         <div className="md:col-span-5 flex justify-center">
           <div className="relative w-[300px] h-[380px] md:w-[400px] md:h-[500px]">
             <Image
-              src="https://purebio.me/images/photo-tub-neutral.png"
+              src="/images/products/tub-neutral.webp"
               alt="PureBiome Essential Tub"
               fill
               priority

@@ -74,7 +74,7 @@ export default function Formula() {
               className="absolute inset-0 rounded-[40%] bg-culture/20 blur-3xl -z-10"
             />
             <Image
-              src="https://purebio.me/images/photo-tub-berry.png"
+              src="/images/products/tub-berry.webp"
               alt="PureBiome Essential Tub, Berry"
               fill
               sizes="(max-width: 768px) 320px, 400px"

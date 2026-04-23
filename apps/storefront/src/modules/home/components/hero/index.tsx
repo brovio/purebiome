@@ -4,7 +4,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 /**
  * PureBiome homepage hero.
  * Left: headline + subhead + primary CTA + trust markers.
- * Right: product photograph (Essential Tub, Neutral) served from purebio.me/images.
+ * Right: product photograph (Essential Tub, Neutral) served locally from /images/products.
  * Copy direction matches the AG1-inspired V1 landing brief.
  */
 const Hero = () => {
@@ -62,7 +62,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-full bg-culture/40 blur-3xl -z-10"
             />
             <Image
-              src="https://purebio.me/images/photo-tub-neutral.png"
+              src="/images/products/tub-neutral.webp"
               alt="PureBiome Essential Tub"
               fill
               priority
