@@ -7,7 +7,9 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import RecipeCard from "@modules/recipes/components/recipe-card"
 import { HttpTypes } from "@medusajs/types"
+import { recipes } from "../../../../content/recipes/recipes"
 
 /**
  * Brand-specific intros per category handle. Falls back to category.description
@@ -307,6 +309,40 @@ export default function CategoryTemplate({
           </Suspense>
         </div>
       </div>
+
+      {/* Recipe teaser rail — 3 ways to use this category's product */}
+      {story && (
+        <div className="content-container py-16">
+          <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-cane/80 mb-2">
+                Ways to use it
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl leading-[1.05] text-ink">
+                Stir it into food you already cook.
+              </h2>
+            </div>
+            <LocalizedClientLink
+              href="/recipes"
+              className="text-sm font-medium tracking-wide text-ink hover:text-cane transition-colors"
+            >
+              All recipes →
+            </LocalizedClientLink>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {recipes
+              .filter(
+                (r) =>
+                  r.featuredProduct === "both" ||
+                  r.featuredProduct === (category.handle as "essential" | "pro")
+              )
+              .slice(0, 3)
+              .map((r) => (
+                <RecipeCard key={r.slug} recipe={r} />
+              ))}
+          </div>
+        </div>
+      )}
 
       {/* FAQ — category-specific, 4 Q/As */}
       {story?.faq && (
