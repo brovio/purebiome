@@ -338,13 +338,16 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
   const proCat = categoryResult.find((c) => c.name === "Pro")!;
 
   // Price helpers -----------------------------------------------------------
-  // Medusa amounts are in the smallest currency unit (cents).
-  const price = (aud: number, usd: number, nzd?: number) => {
+  // Medusa v2 stores prices as decimal values in whole currency units.
+  // The seed here takes cents for readability (2995 = $29.95) and
+  // divides by 100 to match what convertToLocale() expects on the
+  // storefront. Use cents throughout; the helper does the conversion.
+  const price = (audCents: number, usdCents: number, nzdCents?: number) => {
     const rows = [
-      { currency_code: "aud", amount: aud },
-      { currency_code: "usd", amount: usd },
+      { currency_code: "aud", amount: audCents / 100 },
+      { currency_code: "usd", amount: usdCents / 100 },
     ];
-    if (nzd) rows.push({ currency_code: "nzd", amount: nzd });
+    if (nzdCents) rows.push({ currency_code: "nzd", amount: nzdCents / 100 });
     return rows;
   };
 
@@ -371,23 +374,25 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
           ],
           options: [{ title: "Flavour", values: ["Neutral", "Berry", "Citrus"] }],
           variants: [
+            // Prices mirror kfibre.com (AU): Neutral $29.95, flavoured $35.50.
+            // USD ≈ 0.65× AUD, NZD ≈ 1.08× AUD.
             {
               title: "Neutral",
               sku: "PB-ESS-TUB-NEU",
               options: { Flavour: "Neutral" },
-              prices: price(4995, 3995, 5495),
+              prices: price(2995, 1950, 3235),
             },
             {
               title: "Berry",
               sku: "PB-ESS-TUB-BER",
               options: { Flavour: "Berry" },
-              prices: price(4995, 3995, 5495),
+              prices: price(3550, 2310, 3835),
             },
             {
               title: "Citrus",
               sku: "PB-ESS-TUB-CIT",
               options: { Flavour: "Citrus" },
-              prices: price(4995, 3995, 5495),
+              prices: price(3550, 2310, 3835),
             },
           ],
           sales_channels: [{ id: defaultSalesChannel[0].id }],
@@ -462,11 +467,12 @@ export default async function seedPureBiomeData({ container }: ExecArgs) {
           images: [{ url: IMG("tub-citrus.webp") }],
           options: [{ title: "Flavour", values: ["Orange"] }],
           variants: [
+            // kfibre.com Pro Dietary Constipation Support: AUD $64.95.
             {
               title: "Orange",
               sku: "PB-PRO-FLW-ORG",
               options: { Flavour: "Orange" },
-              prices: price(6495, 4995, 7195),
+              prices: price(6495, 4220, 7015),
             },
           ],
           sales_channels: [{ id: defaultSalesChannel[0].id }],
