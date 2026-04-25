@@ -10,6 +10,11 @@ const requiredEnvs = [
 ]
 
 function checkEnvVariables() {
+  // Skip validation for static/GitHub Pages builds
+  if (process.env.SKIP_ENV_VALIDATION === 'true') {
+    return
+  }
+
   const missingEnvs = requiredEnvs.filter(function (env) {
     return !process.env[env.key]
   })
