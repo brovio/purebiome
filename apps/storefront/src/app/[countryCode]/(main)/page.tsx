@@ -4,6 +4,7 @@ import Hero from "@modules/home/components/hero"
 import PromiseStrip from "@modules/home/components/promise-strip"
 import Problem from "@modules/home/components/problem"
 import Formula from "@modules/home/components/formula"
+import HowItWorks from "@modules/home/components/how-it-works"
 import Ritual from "@modules/home/components/ritual"
 import HomeProductGrid from "@modules/home/components/product-grid"
 import Science from "@modules/home/components/science"
@@ -34,6 +35,7 @@ export default async function Home(props: {
       <PromiseStrip />
       <Problem />
       <Formula />
+      <HowItWorks />
       <Ritual />
       <HomeProductGrid region={region} countryCode={countryCode} />
       <Science />

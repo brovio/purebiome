@@ -44,7 +44,15 @@ export default async function Nav() {
           </div>
 
           {/* Centre: primary nav (desktop only) */}
-          <ul className="hidden small:flex items-center gap-x-8 h-full text-ink/80">
+          <ul className="hidden small:flex items-center gap-6 h-full text-ink/80">
+            <li>
+              <LocalizedClientLink
+                href="/quiz"
+                className="text-cane font-medium hover:text-cane/80 transition-colors"
+              >
+                Take the Quiz
+              </LocalizedClientLink>
+            </li>
             <li>
               <LocalizedClientLink
                 href="/store"
