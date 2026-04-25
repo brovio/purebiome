@@ -1,6 +1,6 @@
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import type { BlogPost } from "../../../../../content/blog/posts.generated"
+import type { BlogPost } from "../../../../content/blog/posts.generated"
 
 /**
  * Blog index card. Large hero image on top, Fraunces headline, excerpt,

@@ -171,4 +171,70 @@ test.describe("PureBiome storefront smoke suite", () => {
     // Final CTA
     await expect(page.getByText(/Buy one tub/i)).toBeVisible()
   })
+
+  test("blog index lists all ingested posts + first detail renders", async ({
+    page,
+  }) => {
+    await page.goto("/au/blog")
+    await expect(page.getByText(/Gut-health reading/i)).toBeVisible()
+    // One featured + 9 tiles = 10 posts from kfibre.brov.io.
+    const cards = page.locator("a[href*='/blog/']")
+    expect(await cards.count()).toBeGreaterThanOrEqual(10)
+
+    // Detail page: title + attribution back to kfibre.brov.io.
+    await page.goto(
+      "/au/blog/how-probiotics-and-prebiotics-work-together-for-optimal-gut-health"
+    )
+    await expect(
+      page.getByRole("heading", {
+        name: /How Probiotics and Prebiotics Work Together/i,
+      })
+    ).toBeVisible()
+    await expect(page.getByText(/Originally published at/i)).toBeVisible()
+    await expect(page.getByText(/kfibre\.brov\.io/i).first()).toBeVisible()
+  })
+
+  test("recipes index + detail page with ingredients + Recipe JSON-LD", async ({
+    page,
+  }) => {
+    await page.goto("/au/recipes")
+    await expect(page.getByText(/Stir it in\./i)).toBeVisible()
+    const recipeCards = page.locator("a[href*='/recipes/']")
+    expect(await recipeCards.count()).toBeGreaterThanOrEqual(8)
+
+    await page.goto("/au/recipes/daily-smoothie")
+    await expect(page.getByText(/Prebiotic smoothie/i)).toBeVisible()
+    await expect(page.getByText(/Ingredients/i)).toBeVisible()
+    await expect(page.getByText(/Method/i)).toBeVisible()
+
+    // schema.org/Recipe JSON-LD emitted inline.
+    const html = await page.content()
+    const recipeLd = html.match(
+      /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/
+    )
+    expect(recipeLd, "expected Recipe JSON-LD on /recipes/[slug]").toBeTruthy()
+    const parsed = JSON.parse(recipeLd![1])
+    expect(parsed["@type"]).toBe("Recipe")
+    expect(parsed.recipeIngredient.length).toBeGreaterThan(0)
+    expect(parsed.recipeInstructions.length).toBeGreaterThan(0)
+  })
+
+  test("nav surfaces Journal + Recipes links", async ({ page }) => {
+    await page.goto("/au")
+    // Nav + footer both include these links; .first() keeps the test strict.
+    await expect(
+      page.getByRole("link", { name: "Journal" }).first()
+    ).toBeVisible()
+    await expect(
+      page.getByRole("link", { name: "Recipes" }).first()
+    ).toBeVisible()
+  })
+
+  test("category page shows the recipe teaser rail", async ({ page }) => {
+    await page.goto("/au/categories/essential")
+    await expect(page.getByText(/Ways to use it/i)).toBeVisible()
+    await expect(
+      page.getByRole("link", { name: /all recipes/i })
+    ).toBeVisible()
+  })
 })

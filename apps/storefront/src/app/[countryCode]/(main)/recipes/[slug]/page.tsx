@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { recipes } from "../../../../../../content/recipes/recipes"
+import { recipes } from "../../../../../content/recipes/recipes"
 
 type Params = { countryCode: string; slug: string }
 

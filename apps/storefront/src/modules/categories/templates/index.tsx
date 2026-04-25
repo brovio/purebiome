@@ -9,7 +9,7 @@ import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import RecipeCard from "@modules/recipes/components/recipe-card"
 import { HttpTypes } from "@medusajs/types"
-import { recipes } from "../../../../content/recipes/recipes"
+import { recipes } from "../../../content/recipes/recipes"
 
 /**
  * Brand-specific intros per category handle. Falls back to category.description
@@ -258,13 +258,13 @@ export default function CategoryTemplate({
                 key={r.title}
                 className="flex flex-col gap-4 rounded-2xl overflow-hidden bg-ink/[0.03] p-5"
               >
-                <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-bone">
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-bone">
                   <Image
                     src={r.image}
                     alt={r.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center"
+                    sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 380px"
+                    className="object-contain object-center p-4"
                   />
                 </div>
                 <div>

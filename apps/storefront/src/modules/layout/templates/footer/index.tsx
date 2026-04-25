@@ -59,16 +59,30 @@ export default async function Footer() {
           </ul>
         </div>
 
-        {/* Science & Story */}
+        {/* Learn */}
         <div className="md:col-span-3 flex flex-col gap-3">
           <h3 className="text-xs uppercase tracking-[0.18em] text-bone/60">
-            Science &amp; Story
+            Learn
           </h3>
           <ul className="flex flex-col gap-2 text-sm text-bone/85">
+            <li>
+              <LocalizedClientLink
+                href="/recipes"
+                className="hover:text-culture transition-colors"
+              >
+                Ritual recipes
+              </LocalizedClientLink>
+            </li>
+            <li>
+              <LocalizedClientLink
+                href="/blog"
+                className="hover:text-culture transition-colors"
+              >
+                Journal
+              </LocalizedClientLink>
+            </li>
             <li>Our strains</li>
             <li>Sugar-cane prebiotic</li>
-            <li>Clinical evidence</li>
-            <li>Journal</li>
           </ul>
         </div>
 

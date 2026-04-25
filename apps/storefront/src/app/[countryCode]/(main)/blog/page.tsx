@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import PostCard from "@modules/blog/components/post-card"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { blogPosts } from "../../../../../content/blog/posts.generated"
+import { blogPosts } from "../../../../content/blog/posts.generated"
 
 export const metadata: Metadata = {
   title: "Journal — gut-health reading",

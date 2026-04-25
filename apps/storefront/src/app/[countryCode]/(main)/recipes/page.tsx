@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import RecipeCard from "@modules/recipes/components/recipe-card"
-import { recipes } from "../../../../../content/recipes/recipes"
+import { recipes } from "../../../../content/recipes/recipes"
 
 export const metadata: Metadata = {
   title: "Ritual recipes — cooking with PureBiome",

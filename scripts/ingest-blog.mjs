@@ -16,7 +16,7 @@ import { fileURLToPath } from "node:url"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, "..")
-const CONTENT = path.join(ROOT, "apps/storefront/content/blog")
+const CONTENT = path.join(ROOT, "apps/storefront/src/content/blog")
 const IMAGES = path.join(ROOT, "apps/storefront/public/images/blog")
 
 const SOURCE = "https://kfibre.brov.io"

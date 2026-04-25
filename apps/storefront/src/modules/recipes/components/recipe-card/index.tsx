@@ -1,6 +1,6 @@
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import type { Recipe } from "../../../../../content/recipes/recipes"
+import type { Recipe } from "../../../../content/recipes/recipes"
 
 /**
  * Recipe index card. Used on /recipes grid and as the 3-up teaser rail

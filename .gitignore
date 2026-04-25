@@ -35,7 +35,10 @@ infra/data/
 # coverage
 coverage/
 
-# playwright
+# Transient commit message file used by the dev workflow
+COMMIT_MSG.txt
+
+# Playwright
 test-results/
 playwright-report/
 playwright/.cache/

@@ -71,6 +71,22 @@ export default async function Nav() {
             </li>
             <li>
               <LocalizedClientLink
+                href="/recipes"
+                className="hover:text-cane transition-colors"
+              >
+                Recipes
+              </LocalizedClientLink>
+            </li>
+            <li>
+              <LocalizedClientLink
+                href="/blog"
+                className="hover:text-cane transition-colors"
+              >
+                Journal
+              </LocalizedClientLink>
+            </li>
+            <li>
+              <LocalizedClientLink
                 href="/account"
                 className="hover:text-cane transition-colors"
               >

@@ -68,13 +68,13 @@ export default function Formula() {
 
         {/* Right: product image — tight framing, no empty-space halo */}
         <div className="md:col-span-5 md:sticky md:top-24 flex justify-center">
-          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[32px] overflow-hidden bg-culture/15">
+          <div className="relative w-full max-w-[420px] aspect-square rounded-[32px] overflow-hidden bg-culture/15">
             <Image
               src="/images/products/tub-berry.webp"
               alt="PureBiome Essential Tub, Berry"
               fill
-              sizes="(max-width: 768px) 320px, 420px"
-              className="object-cover object-center"
+              sizes="(max-width: 768px) 90vw, 420px"
+              className="object-contain object-center p-6"
             />
           </div>
         </div>

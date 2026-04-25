@@ -3,6 +3,8 @@ import { getBaseURL } from "@lib/util/env"
 import { listRegions } from "@lib/data/regions"
 import { listProducts } from "@lib/data/products"
 import { listCategories } from "@lib/data/categories"
+import { blogPosts } from "../content/blog/posts.generated"
+import { recipes } from "../content/recipes/recipes"
 
 /**
  * Sitemap for every product and category in every region we ship to.
@@ -45,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     listCategories().catch(() => []),
   ])
 
-  const staticPaths = ["", "/store", "/v3"]
+  const staticPaths = ["", "/store", "/v3", "/blog", "/recipes"]
   const urls: MetadataRoute.Sitemap = []
 
   for (const cc of countryCodes) {
@@ -75,6 +77,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: "weekly",
         priority: 0.7,
+      })
+    }
+
+    // Blog posts — last-modified uses the authored date.
+    for (const post of blogPosts) {
+      urls.push({
+        url: `${base}/${cc}/blog/${post.slug}`,
+        lastModified: new Date(post.date),
+        changeFrequency: "monthly",
+        priority: 0.6,
+      })
+    }
+
+    // Ritual recipes — static content, priority 0.6.
+    for (const recipe of recipes) {
+      urls.push({
+        url: `${base}/${cc}/recipes/${recipe.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.6,
       })
     }
   }

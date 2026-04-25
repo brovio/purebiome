@@ -34,24 +34,24 @@ export default function V3Hero() {
             </LocalizedClientLink>
           </div>
         </div>
-        <div className="md:col-span-5 flex flex-col items-center gap-4">
-          <div className="relative w-full max-w-[440px] aspect-[4/5] bg-bone/60">
+        <div className="md:col-span-5 flex flex-col items-center gap-6">
+          <div className="relative w-full max-w-[440px] aspect-square bg-bone/60 rounded-2xl overflow-hidden">
             <Image
               src="/images/products/tub-neutral.webp"
               alt="PureBiome Essential Tub"
               fill
               priority
-              sizes="(max-width: 768px) 320px, 440px"
-              className="object-cover object-center"
+              sizes="(max-width: 768px) 90vw, 440px"
+              className="object-contain object-center p-6"
             />
           </div>
-          <div className="relative w-full max-w-[440px] aspect-[5/2] bg-bone/60">
+          <div className="relative w-full max-w-[440px] aspect-[3/2] bg-bone/60 rounded-2xl overflow-hidden">
             <Image
               src="/images/products/sachets-neutral.webp"
               alt="PureBiome Essential Sachets"
               fill
-              sizes="(max-width: 768px) 320px, 440px"
-              className="object-cover object-center"
+              sizes="(max-width: 768px) 90vw, 440px"
+              className="object-contain object-center p-4"
             />
           </div>
         </div>
