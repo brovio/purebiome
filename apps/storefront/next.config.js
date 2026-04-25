@@ -13,10 +13,7 @@ const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
  */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
-  distDir: 'dist',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",
