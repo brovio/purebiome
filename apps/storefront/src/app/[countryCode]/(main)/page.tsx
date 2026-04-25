@@ -11,12 +11,38 @@ import Science from "@modules/home/components/science"
 import Testimonials from "@modules/home/components/testimonials"
 import Faq from "@modules/home/components/faq"
 import FinalCta from "@modules/home/components/final-cta"
+import HomeJsonLd from "./home-jsonld"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
-  title: "PureBiome — daily prebiotic + live cultures",
+  title: "PureBiome — Australian Prebiotic + Probiotic for Gut Health",
   description:
-    "One tub, one ingredient base: Australian sugar cane. Twelve living strains. Monash Low FODMAP certified, 100% Australian made.",
+    "Clinically-studied prebiotic fibre from Australian sugarcane + 12 live probiotic strains. Monash Low FODMAP certified. Notice the difference in 3-5 days.",
+  keywords: ["prebiotic Australia", "probiotic gut health", "Low FODMAP supplement", "digestive health", "gut microbiome", "Australian sugarcane fibre"],
+  openGraph: {
+    title: "PureBiome — Australian Prebiotic + Probiotic for Gut Health",
+    description: "Clinically-studied prebiotic fibre from Australian sugarcane + 12 live probiotic strains. Monash Low FODMAP certified.",
+    type: "website",
+    locale: "en_AU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PureBiome — Australian Prebiotic + Probiotic",
+    description: "12 clinically-studied strains. Australian sugarcane prebiotic. Monash Low FODMAP certified.",
+  },
+  alternates: {
+    canonical: "/au",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 }
 
 export default async function Home(props: {
@@ -31,6 +57,7 @@ export default async function Home(props: {
 
   return (
     <>
+      <HomeJsonLd />
       <Hero />
       <PromiseStrip />
       <Problem />
