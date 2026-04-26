@@ -69,6 +69,12 @@ const recommendations: Record<string, { title: string; desc: string; href: strin
   },
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default function QuizPage() {
   return (
     <div className="min-h-screen bg-bone">

@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   description: "Sign in to your PureBiome account.",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default function Login() {
   return <LoginTemplate />
 }

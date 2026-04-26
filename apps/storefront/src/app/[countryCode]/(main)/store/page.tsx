@@ -18,6 +18,12 @@ type Params = {
   }>
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function StorePage(props: Params) {
   const params = await props.params;
   const searchParams = await props.searchParams;

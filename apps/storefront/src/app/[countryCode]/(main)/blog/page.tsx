@@ -9,6 +9,12 @@ export const metadata: Metadata = {
     "Essays and research notes from the PureBiome team and our source partners at Kfibre. Microbiome science, daily rituals, and the occasional opinion.",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default function BlogIndexPage() {
   // posts.generated.ts is already ordered newest-first.
   const posts = blogPosts

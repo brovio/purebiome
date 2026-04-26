@@ -8,6 +8,12 @@ export const metadata: Metadata = {
     "Eight ways to stir PureBiome Essential into food you already make. No new recipes to learn — just a teaspoon at the right moment.",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default function RecipesIndexPage() {
   return (
     <div className="bg-bone">

@@ -21,6 +21,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function OrderDetailPage(props: Props) {
   const params = await props.params
   const order = await retrieveOrder(params.id).catch(() => null)
