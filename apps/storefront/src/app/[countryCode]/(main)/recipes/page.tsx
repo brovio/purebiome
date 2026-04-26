@@ -1,3 +1,4 @@
+// Last verified: 2026-04-26T22:56:19.973Z
 import { Metadata } from "next"
 import RecipeCard from "@modules/recipes/components/recipe-card"
 import { recipes } from "../../../../content/recipes/recipes"

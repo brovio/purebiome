@@ -1,3 +1,4 @@
+// Last verified: 2026-04-26T22:56:19.973Z
 import { retrieveOrder } from "@lib/data/orders"
 import OrderDetailsTemplate from "@modules/order/templates/order-details-template"
 import { Metadata } from "next"

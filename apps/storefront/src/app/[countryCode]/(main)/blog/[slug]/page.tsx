@@ -1,3 +1,4 @@
+// Last verified: 2026-04-26T22:56:19.973Z
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Image from "next/image"

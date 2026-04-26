@@ -1,3 +1,4 @@
+// Last verified: 2026-04-26T22:56:19.973Z
 import { Heading, Text } from "@medusajs/ui"
 import TransferActions from "@modules/order/components/transfer-actions"
 import TransferImage from "@modules/order/components/transfer-image"

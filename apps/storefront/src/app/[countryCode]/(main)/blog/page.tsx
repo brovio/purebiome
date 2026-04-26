@@ -1,3 +1,4 @@
+// Last verified: 2026-04-26T22:56:19.973Z
 import { Metadata } from "next"
 import PostCard from "@modules/blog/components/post-card"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"

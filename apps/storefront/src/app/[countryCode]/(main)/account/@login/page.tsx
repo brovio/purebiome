@@ -1,3 +1,4 @@
+// Last verified: 2026-04-26T22:56:19.973Z
 import { Metadata } from "next"
 
 import LoginTemplate from "@modules/account/templates/login-template"
