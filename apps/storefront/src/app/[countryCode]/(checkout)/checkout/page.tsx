@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Checkout",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function Checkout() {
   const cart = await retrieveCart()
 

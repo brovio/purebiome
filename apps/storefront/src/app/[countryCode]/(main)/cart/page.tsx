@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   description: "View your cart",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function Cart() {
   const cart = await retrieveCart().catch((error) => {
     console.error(error)

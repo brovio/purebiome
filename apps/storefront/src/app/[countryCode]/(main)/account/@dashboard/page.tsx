@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   description: "Overview of your account activity.",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function OverviewTemplate() {
   const customer = await retrieveCustomer().catch(() => null)
   const orders = (await listOrders().catch(() => null)) || null
