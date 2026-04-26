@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = join(__dirname, '..');
 
-// Recursively find all page.tsx files
+// Recursively find all page.tsx and layout.tsx files
 function findPageFiles(dir, files = []) {
   const items = readdirSync(dir);
   for (const item of items) {
@@ -19,7 +19,7 @@ function findPageFiles(dir, files = []) {
     const stat = statSync(fullPath);
     if (stat.isDirectory()) {
       findPageFiles(fullPath, files);
-    } else if (item === 'page.tsx') {
+    } else if (item === 'page.tsx' || item === 'layout.tsx') {
       files.push(fullPath);
     }
   }
@@ -29,7 +29,7 @@ function findPageFiles(dir, files = []) {
 const startDir = join(root, 'apps/storefront/src/app/[countryCode]');
 const files = findPageFiles(startDir);
 
-console.log(`Found ${files.length} page.tsx files\n`);
+console.log(`Found ${files.length} page.tsx and layout.tsx files\n`);
 
 let modified = 0;
 

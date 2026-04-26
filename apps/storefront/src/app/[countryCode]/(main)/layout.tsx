@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function PageLayout(props: {
   children: React.ReactNode
   params: Promise<{ countryCode: string }>

@@ -1,6 +1,12 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 /**
  * Checkout shell.
  * Reduced chrome: no main nav, no footer, no geobar — just a back-to-cart
