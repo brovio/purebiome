@@ -16,6 +16,11 @@ type Props = {
 }
 
 export async function generateStaticParams() {
+  // Skip during static export - no backend available
+  if (process.env.STATIC_EXPORT === 'true') {
+    return []
+  }
+
   const product_categories = await listCategories()
 
   if (!product_categories) {

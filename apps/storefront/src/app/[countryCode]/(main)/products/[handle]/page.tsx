@@ -12,6 +12,11 @@ type Props = {
 }
 
 export async function generateStaticParams() {
+  // Skip during static export - no backend available
+  if (process.env.STATIC_EXPORT === 'true') {
+    return []
+  }
+
   try {
     const countryCodes = await listRegions().then((regions) =>
       regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()

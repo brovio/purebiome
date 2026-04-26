@@ -27,6 +27,7 @@ const nextConfig = {
   // Skip env validation for static build
   env: {
     SKIP_ENV_VALIDATION: 'true',
+    STATIC_EXPORT: 'true',
   },
 }
 
