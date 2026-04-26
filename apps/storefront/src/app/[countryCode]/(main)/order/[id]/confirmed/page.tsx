@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description: "You purchase was successful",
 }
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function OrderConfirmedPage(props: Props) {
   const params = await props.params
   const order = await retrieveOrder(params.id).catch(() => null)
