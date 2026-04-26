@@ -21,6 +21,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Verify checkout
+        run: |
+          echo "Building commit: $(git rev-parse HEAD)"
+          echo "Commit message: $(git log -1 --pretty=%B)"
+          echo "Branch: ${{ github.ref_name }}"
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -32,13 +38,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Verify static export compatibility
+        run: node scripts/verify-static-export.mjs
+
       - name: Build storefront for GitHub Pages
         run: |
           cd apps/storefront
           cp next.config.github.js next.config.js
-          NEXT_PUBLIC_DEMO_MODE=true pnpm run build
+          NEXT_PUBLIC_DEMO_MODE=true STATIC_EXPORT=true pnpm run build
         env:
           NEXT_PUBLIC_BASE_URL: https://purebio.me
+          STATIC_EXPORT: true
 
       - name: Add .nojekyll and CNAME
         run: |
