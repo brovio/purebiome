@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next"
 import { getBaseURL } from "@lib/util/env"
 
+export const dynamic = "force-static"
+
 /**
  * Disallow anything that's private or transactional; everything else is
  * fair game. The sitemap lives alongside.

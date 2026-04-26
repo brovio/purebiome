@@ -6,6 +6,8 @@ import { listCategories } from "@lib/data/categories"
 import { blogPosts } from "../content/blog/posts.generated"
 import { recipes } from "../content/recipes/recipes"
 
+export const dynamic = "force-static"
+
 /**
  * Sitemap for every product and category in every region we ship to.
  *
