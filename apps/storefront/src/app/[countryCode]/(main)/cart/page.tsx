@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "View your cart",
 }
 
+// REQUIRED for static export - do not remove
 export const dynamic = 'force-static'
 
 export async function generateStaticParams() {

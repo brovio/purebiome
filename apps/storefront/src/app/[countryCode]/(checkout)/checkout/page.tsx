@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Checkout",
 }
 
+// REQUIRED for static export - do not remove
 export const dynamic = 'force-static'
 
 export async function generateStaticParams() {
