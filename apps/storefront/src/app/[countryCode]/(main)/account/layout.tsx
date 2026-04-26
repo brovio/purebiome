@@ -2,6 +2,12 @@ import { retrieveCustomer } from "@lib/data/customer"
 import { Toaster } from "@medusajs/ui"
 import AccountLayout from "@modules/account/templates/account-layout"
 
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  return []
+}
+
 export default async function AccountPageLayout({
   dashboard,
   login,
