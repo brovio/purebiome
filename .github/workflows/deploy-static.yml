@@ -1,0 +1,76 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches: [feature/purebio-me-marketing-preview]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v4
+        with:
+          ref: feature/purebio-me-marketing-preview
+
+      - name: Show what we're building
+        run: |
+          echo "=== BUILD INFO ==="
+          echo "Commit: $(git rev-parse HEAD)"
+          echo "Message: $(git log -1 --pretty=%B)"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "=================="
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Verify all files have generateStaticParams
+        run: |
+          echo "Running verification..."
+          node scripts/verify-static-export.mjs
+          echo "Verification passed!"
+
+      - name: Build static site
+        run: |
+          cd apps/storefront
+          echo "Copying GitHub Pages config..."
+          cp next.config.github.js next.config.js
+          echo "Building..."
+          NEXT_PUBLIC_DEMO_MODE=true STATIC_EXPORT=true pnpm run build
+        env:
+          NEXT_PUBLIC_BASE_URL: https://purebio.me
+          STATIC_EXPORT: true
+          SKIP_ENV_VALIDATION: true
+
+      - name: Prepare deployment
+        run: |
+          touch apps/storefront/dist/.nojekyll
+          cp apps/storefront/public/CNAME apps/storefront/dist/CNAME
+          echo "Build complete! Files ready in apps/storefront/dist"
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/storefront/dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
