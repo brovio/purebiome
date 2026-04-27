@@ -15,27 +15,28 @@ export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
-
 export default async function PageLayout(props: {
   children: React.ReactNode
   params: Promise<{ countryCode: string }>
 }) {
-  const [{ countryCode }, customer, cart] = await Promise.all([
-    props.params,
-    retrieveCustomer(),
-    retrieveCart(),
-  ])
+  const { countryCode } = await props.params
+
+  let customer = null
+  let cart = null
   let shippingOptions: StoreCartShippingOption[] = []
 
-  if (cart) {
-    const { shipping_options } = await listCartOptions()
+  try {
+    ;[customer, cart] = await Promise.all([
+      retrieveCustomer(),
+      retrieveCart(),
+    ])
 
-    shippingOptions = shipping_options
+    if (cart) {
+      const { shipping_options } = await listCartOptions()
+      shippingOptions = shipping_options
+    }
+  } catch (error) {
+    // Backend unavailable — render layout without cart/customer data
   }
 
   return (

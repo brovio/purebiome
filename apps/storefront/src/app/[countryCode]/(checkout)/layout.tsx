@@ -2,12 +2,6 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
-
 /**
  * Checkout shell.
  * Reduced chrome: no main nav, no footer, no geobar — just a back-to-cart

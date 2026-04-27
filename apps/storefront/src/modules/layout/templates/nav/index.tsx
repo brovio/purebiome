@@ -15,11 +15,19 @@ import SideMenu from "@modules/layout/components/side-menu"
  * - Colours: bone background, ink text, cane for active/hover.
  */
 export default async function Nav() {
-  const [regions, locales, currentLocale] = await Promise.all([
-    listRegions().then((regions: StoreRegion[]) => regions),
-    listLocales(),
-    getLocale(),
-  ])
+  let regions: StoreRegion[] = []
+  let locales: any[] = []
+  let currentLocale: any = null
+
+  try {
+    ;[regions, locales, currentLocale] = await Promise.all([
+      listRegions().then((regions: StoreRegion[]) => regions),
+      listLocales(),
+      getLocale(),
+    ])
+  } catch (error) {
+    // Backend unavailable — render nav without region/locale data
+  }
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">

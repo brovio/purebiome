@@ -112,9 +112,16 @@ export async function middleware(request: NextRequest) {
 
   let cacheId = cacheIdCookie?.value || crypto.randomUUID()
 
-  const regionMap = await getRegionMap(cacheId)
+  let regionMap: Map<string, HttpTypes.StoreRegion | number> | null = null
+  try {
+    regionMap = await getRegionMap(cacheId)
+  } catch (error) {
+    // Backend unavailable — fall through to default region redirect
+  }
 
-  const countryCode = regionMap && (await getCountryCode(request, regionMap))
+  const countryCode = regionMap
+    ? await getCountryCode(request, regionMap)
+    : DEFAULT_REGION
 
   const urlHasCountryCode =
     countryCode && request.nextUrl.pathname.split("/")[1].includes(countryCode)
@@ -148,11 +155,12 @@ export async function middleware(request: NextRequest) {
     redirectUrl = `${request.nextUrl.origin}/${countryCode}${redirectPath}${queryString}`
     response = NextResponse.redirect(`${redirectUrl}`, 307)
   } else if (!urlHasCountryCode && !countryCode) {
-    // Handle case where no valid country code exists (empty regions)
-    return new NextResponse(
-      "No valid regions configured. Please set up regions with countries in your Medusa Admin.",
-      { status: 500 }
-    )
+    // No valid country code — redirect to default region
+    const redirectPath =
+      request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
+    const queryString = request.nextUrl.search ? request.nextUrl.search : ""
+    redirectUrl = `${request.nextUrl.origin}/${DEFAULT_REGION}${redirectPath}${queryString}`
+    response = NextResponse.redirect(`${redirectUrl}`, 307)
   }
 
   return response

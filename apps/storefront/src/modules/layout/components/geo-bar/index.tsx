@@ -12,7 +12,12 @@ export default async function GeoBar({
 }: {
   countryCode: string
 }) {
-  const regions: StoreRegion[] = await listRegions()
+  let regions: StoreRegion[] = []
+  try {
+    regions = await listRegions()
+  } catch (error) {
+    // Backend unavailable
+  }
   const region = regions.find((r) =>
     r.countries?.some((c) => c.iso_2 === countryCode)
   )
