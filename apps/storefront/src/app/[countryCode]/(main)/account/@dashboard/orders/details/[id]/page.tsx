@@ -22,11 +22,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default async function OrderDetailPage(props: Props) {
   const params = await props.params

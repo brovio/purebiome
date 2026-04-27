@@ -70,11 +70,6 @@ const recommendations: Record<string, { title: string; desc: string; href: strin
   },
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default function QuizPage() {
   return (

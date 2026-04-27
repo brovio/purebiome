@@ -12,11 +12,6 @@ export const metadata: Metadata = {
   description: "View your addresses",
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default async function Addresses(props: {
   params: Promise<{ countryCode: string }>

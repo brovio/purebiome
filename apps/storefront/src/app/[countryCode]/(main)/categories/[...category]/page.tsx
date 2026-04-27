@@ -16,39 +16,37 @@ type Props = {
   }>
 }
 
-export const dynamic = 'force-static'
-export const dynamicParams = false
-
 export async function generateStaticParams() {
-  // Skip during static export - no backend available
-  if (process.env.STATIC_EXPORT === 'true') {
-    return []
-  }
+  try {
+    const product_categories = await listCategories()
 
-  const product_categories = await listCategories()
+    if (!product_categories) {
+      return []
+    }
 
-  if (!product_categories) {
-    return []
-  }
-
-  const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
-    regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
-  )
-
-  const categoryHandles = product_categories.map(
-    (category: any) => category.handle
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode: string | undefined) =>
-      categoryHandles.map((handle: any) => ({
-        countryCode,
-        category: [handle],
-      }))
+    const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
+      regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
     )
-    .flat()
 
-  return staticParams
+    const categoryHandles = product_categories.map(
+      (category: any) => category.handle
+    )
+
+    const staticParams = countryCodes
+      ?.map((countryCode: string | undefined) =>
+        categoryHandles.map((handle: any) => ({
+          countryCode,
+          category: [handle],
+        }))
+      )
+      .flat()
+
+    return staticParams
+  } catch (error) {
+    // Backend unavailable - return empty array, pages will render on-demand
+    console.log('Backend unavailable during build, skipping category pre-generation')
+    return []
+  }
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {

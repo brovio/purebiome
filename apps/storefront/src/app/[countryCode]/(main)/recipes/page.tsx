@@ -9,11 +9,6 @@ export const metadata: Metadata = {
     "Eight ways to stir PureBiome Essential into food you already make. No new recipes to learn — just a teaspoon at the right moment.",
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default function RecipesIndexPage() {
   return (

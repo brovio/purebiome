@@ -21,11 +21,6 @@ export const metadata: Metadata = {
     "12 live strains. 10 billion CFU. One daily scoop of a Queensland-sugar-cane prebiotic. Australian-made. No subscription.",
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default async function V3({
   params,

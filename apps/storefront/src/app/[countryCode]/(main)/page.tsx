@@ -46,11 +46,6 @@ export const metadata: Metadata = {
   },
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default async function Home(props: {
   params: Promise<{ countryCode: string }>

@@ -16,11 +16,6 @@ export const metadata: Metadata = {
   description: "View and edit your PureBiome profile.",
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default async function Profile() {
   const customer = await retrieveCustomer()

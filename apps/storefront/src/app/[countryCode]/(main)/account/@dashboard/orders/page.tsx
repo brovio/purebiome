@@ -12,11 +12,6 @@ export const metadata: Metadata = {
   description: "Overview of your previous orders.",
 }
 
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
 
 export default async function Orders() {
   const orders = await listOrders()

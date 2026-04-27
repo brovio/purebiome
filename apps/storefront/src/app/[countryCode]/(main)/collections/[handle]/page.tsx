@@ -18,45 +18,43 @@ type Props = {
 
 export const PRODUCT_LIMIT = 12
 
-export const dynamic = 'force-static'
-export const dynamicParams = false
-
 export async function generateStaticParams() {
-  // Skip during static export - no backend available
-  if (process.env.STATIC_EXPORT === 'true') {
-    return []
-  }
+  try {
+    const { collections } = await listCollections({
+      fields: "*products",
+    })
 
-  const { collections } = await listCollections({
-    fields: "*products",
-  })
+    if (!collections) {
+      return []
+    }
 
-  if (!collections) {
-    return []
-  }
-
-  const countryCodes = await listRegions().then(
-    (regions: StoreRegion[]) =>
-      regions
-        ?.map((r) => r.countries?.map((c) => c.iso_2))
-        .flat()
-        .filter(Boolean) as string[]
-  )
-
-  const collectionHandles = collections.map(
-    (collection: StoreCollection) => collection.handle
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode: string) =>
-      collectionHandles.map((handle: string | undefined) => ({
-        countryCode,
-        handle,
-      }))
+    const countryCodes = await listRegions().then(
+      (regions: StoreRegion[]) =>
+        regions
+          ?.map((r) => r.countries?.map((c) => c.iso_2))
+          .flat()
+          .filter(Boolean) as string[]
     )
-    .flat()
 
-  return staticParams
+    const collectionHandles = collections.map(
+      (collection: StoreCollection) => collection.handle
+    )
+
+    const staticParams = countryCodes
+      ?.map((countryCode: string) =>
+        collectionHandles.map((handle: string | undefined) => ({
+          countryCode,
+          handle,
+        }))
+      )
+      .flat()
+
+    return staticParams
+  } catch (error) {
+    // Backend unavailable - return empty array, pages will render on-demand
+    console.log('Backend unavailable during build, skipping collection pre-generation')
+    return []
+  }
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {

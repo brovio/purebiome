@@ -12,15 +12,7 @@ type Props = {
   searchParams: Promise<{ v_id?: string }>
 }
 
-export const dynamic = 'force-static'
-export const dynamicParams = false
-
 export async function generateStaticParams() {
-  // Skip during static export - no backend available
-  if (process.env.STATIC_EXPORT === 'true') {
-    return []
-  }
-
   try {
     const countryCodes = await listRegions().then((regions) =>
       regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
@@ -53,11 +45,8 @@ export async function generateStaticParams() {
       )
       .filter((param) => param.handle)
   } catch (error) {
-    console.error(
-      `Failed to generate static paths for product pages: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }.`
-    )
+    // Backend unavailable - return empty array, pages will render on-demand
+    console.log('Backend unavailable during build, skipping product pre-generation')
     return []
   }
 }
