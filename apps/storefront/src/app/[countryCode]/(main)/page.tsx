@@ -51,10 +51,11 @@ export default async function Home(props: {
   params: Promise<{ countryCode: string }>
 }) {
   const { countryCode } = await props.params
-  const region = await getRegion(countryCode)
-
-  if (!region) {
-    return null
+  let region = null
+  try {
+    region = await getRegion(countryCode)
+  } catch (error) {
+    // Backend unavailable — render page without product grid
   }
 
   return (
@@ -66,7 +67,7 @@ export default async function Home(props: {
       <Formula />
       <HowItWorks />
       <Ritual />
-      <HomeProductGrid region={region} countryCode={countryCode} />
+      {region && <HomeProductGrid region={region} countryCode={countryCode} />}
       <Science />
       <Testimonials />
       <Faq />

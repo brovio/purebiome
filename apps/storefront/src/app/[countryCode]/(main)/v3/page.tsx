@@ -28,8 +28,12 @@ export default async function V3({
   params: Promise<{ countryCode: string }>
 }) {
   const { countryCode } = await params
-  const region = await getRegion(countryCode)
-  if (!region) return notFound()
+  let region = null
+  try {
+    region = await getRegion(countryCode)
+  } catch (error) {
+    // Backend unavailable
+  }
 
   return (
     <>

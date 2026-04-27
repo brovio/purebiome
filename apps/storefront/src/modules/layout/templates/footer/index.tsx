@@ -11,7 +11,12 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
  * Bottom strip: © year, Australian-made mark, Monash Low FODMAP line.
  */
 export default async function Footer() {
-  const productCategories = await listCategories()
+  let productCategories: any[] | null = null
+  try {
+    productCategories = await listCategories()
+  } catch (error) {
+    // Backend unavailable — render footer without category links
+  }
 
   return (
     <footer className="bg-ink text-bone w-full">
