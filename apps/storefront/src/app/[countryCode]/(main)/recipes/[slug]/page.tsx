@@ -8,7 +8,8 @@ import { recipes } from "../../../../../content/recipes/recipes"
 type Params = { countryCode: string; slug: string }
 
 export function generateStaticParams() {
-  return recipes.map((r) => ({ slug: r.slug }))
+  // Return empty for static export - recipes are static content
+  return []
 }
 
 export async function generateMetadata({

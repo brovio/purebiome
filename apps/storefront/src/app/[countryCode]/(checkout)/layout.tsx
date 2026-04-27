@@ -4,7 +4,7 @@ import ChevronDown from "@modules/common/icons/chevron-down"
 
 export const dynamic = 'force-static'
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return []
 }
 

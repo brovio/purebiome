@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 // REQUIRED for static export - do not remove
 export const dynamic = 'force-static'
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return []
 }
 

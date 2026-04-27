@@ -5,7 +5,7 @@ import AccountLayout from "@modules/account/templates/account-layout"
 
 export const dynamic = 'force-static'
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return []
 }
 

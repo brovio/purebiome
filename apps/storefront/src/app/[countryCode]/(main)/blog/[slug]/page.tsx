@@ -8,7 +8,8 @@ import { blogPosts } from "../../../../../content/blog/posts.generated"
 type Params = { countryCode: string; slug: string }
 
 export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }))
+  // Return empty for static export - blog posts are static content
+  return []
 }
 
 export async function generateMetadata({

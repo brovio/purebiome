@@ -24,7 +24,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export const dynamic = 'force-static'
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return []
 }
 
