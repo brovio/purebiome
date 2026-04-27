@@ -8,14 +8,8 @@ import { blogPosts } from "../../../../../content/blog/posts.generated"
 type Params = { countryCode: string; slug: string }
 
 export function generateStaticParams() {
-  // For static export, generate params for all blog posts with default country
-  const countryCodes = ['us'] // Default country for static export
-  return countryCodes.flatMap(countryCode =>
-    blogPosts.map(post => ({
-      countryCode,
-      slug: post.slug
-    }))
-  )
+  // Return empty — pages render on-demand via SSR on Vercel
+  return []
 }
 
 export async function generateMetadata({

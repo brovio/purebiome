@@ -8,14 +8,8 @@ import { recipes } from "../../../../../content/recipes/recipes"
 type Params = { countryCode: string; slug: string }
 
 export function generateStaticParams() {
-  // For static export, generate params for all recipes with default country
-  const countryCodes = ['us'] // Default country for static export
-  return countryCodes.flatMap(countryCode =>
-    recipes.map(recipe => ({
-      countryCode,
-      slug: recipe.slug
-    }))
-  )
+  // Return empty — pages render on-demand via SSR on Vercel
+  return []
 }
 
 export async function generateMetadata({

@@ -10,13 +10,6 @@ export const metadata: Metadata = {
   description: "View your cart",
 }
 
-// REQUIRED for static export - do not remove
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
-
 export default async function Cart() {
   const cart = await retrieveCart().catch((error) => {
     console.error(error)

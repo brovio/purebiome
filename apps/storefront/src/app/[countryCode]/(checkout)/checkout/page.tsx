@@ -11,13 +11,6 @@ export const metadata: Metadata = {
   title: "Checkout",
 }
 
-// REQUIRED for static export - do not remove
-export const dynamic = 'force-static'
-
-export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
-}
-
 export default async function Checkout() {
   const cart = await retrieveCart()
 
