@@ -16,6 +16,9 @@ type Props = {
   }>
 }
 
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   // Skip during static export - no backend available
   if (process.env.STATIC_EXPORT === 'true') {
