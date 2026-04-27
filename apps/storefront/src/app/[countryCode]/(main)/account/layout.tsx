@@ -6,7 +6,7 @@ import AccountLayout from "@modules/account/templates/account-layout"
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
-  return []
+  return [{ countryCode: 'us' }]
 }
 
 export default async function AccountPageLayout({

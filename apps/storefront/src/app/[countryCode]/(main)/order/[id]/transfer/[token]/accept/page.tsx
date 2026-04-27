@@ -6,7 +6,7 @@ import TransferImage from "@modules/order/components/transfer-image"
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
-  return []
+  return [{ countryCode: 'us' }]
 }
 
 export default async function TransferPage({

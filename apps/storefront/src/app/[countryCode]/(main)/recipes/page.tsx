@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
-  return []
+  return [{ countryCode: 'us' }]
 }
 
 export default function RecipesIndexPage() {

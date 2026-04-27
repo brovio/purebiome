@@ -8,8 +8,14 @@ import { recipes } from "../../../../../content/recipes/recipes"
 type Params = { countryCode: string; slug: string }
 
 export function generateStaticParams() {
-  // Return empty for static export - recipes are static content
-  return []
+  // For static export, generate params for all recipes with default country
+  const countryCodes = ['us'] // Default country for static export
+  return countryCodes.flatMap(countryCode =>
+    recipes.map(recipe => ({
+      countryCode,
+      slug: recipe.slug
+    }))
+  )
 }
 
 export async function generateMetadata({

@@ -5,7 +5,7 @@ import ChevronDown from "@modules/common/icons/chevron-down"
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
-  return []
+  return [{ countryCode: 'us' }]
 }
 
 /**
