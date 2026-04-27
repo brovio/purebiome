@@ -1,33 +1,62 @@
+const checkEnvVariables = require("./check-env-variables")
+
+checkEnvVariables()
+
 /**
- * Next.js config for GitHub Pages deployment with custom domain
- * This is a STATIC export config - no backend required
+ * Medusa Cloud-related environment variables
  */
+const S3_HOSTNAME = process.env.MEDUSA_CLOUD_S3_HOSTNAME
+const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
 
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-  output: 'export',
-  distDir: 'dist',
-  
-  // Images must be unoptimized for static export
-  images: {
-    unoptimized: true,
-  },
-
-  // Required for static export with trailing slashes
-  trailingSlash: true,
-
-  // Ignore TypeScript and ESLint errors during build
-  typescript: {
-    ignoreBuildErrors: true,
+  reactStrictMode: true,
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-
-  // Skip env validation for static build
-  env: {
-    SKIP_ENV_VALIDATION: 'true',
-    STATIC_EXPORT: 'true',
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "medusa-public-images.s3.eu-west-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "medusa-server-testing.s3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "purebio.me",
+      },
+      ...(S3_HOSTNAME && S3_PATHNAME
+        ? [
+            {
+              protocol: "https",
+              hostname: S3_HOSTNAME,
+              pathname: S3_PATHNAME,
+            },
+          ]
+        : []),
+    ],
   },
 }
 
