@@ -13,9 +13,11 @@ export const metadata: Metadata = {
 }
 
 export const dynamic = 'force-static'
+export const dynamicParams = false
 
 export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
+  // Return empty for static export - order pages require backend
+  return []
 }
 
 export default async function OrderConfirmedPage(props: Props) {

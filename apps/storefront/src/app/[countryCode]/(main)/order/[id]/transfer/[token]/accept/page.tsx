@@ -4,9 +4,10 @@ import { Heading, Text } from "@medusajs/ui"
 import TransferImage from "@modules/order/components/transfer-image"
 
 export const dynamic = 'force-static'
+export const dynamicParams = false
 
 export function generateStaticParams() {
-  return [{ countryCode: 'us' }]
+  return []
 }
 
 export default async function TransferPage({
