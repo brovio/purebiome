@@ -1,5 +1,5 @@
 // Recipes — distilled from kfibre.brov.io/recipe-inspiration/ into
-// eight ritual-recipe cards. Each one is a "how to stir PureBiome
+// eight ritual-recipe cards. Each one is a "how to stir Kfibre
 // (née Kfibre) into food you already cook" prompt, not a full recipe.
 // Source: https://kfibre.brov.io/recipe-inspiration/
 
@@ -35,7 +35,7 @@ export const recipes: Recipe[] = [
     prepTime: "2 min",
     difficulty: "Easy",
     ingredients: [
-      "1 teaspoon PureBiome Essential (Neutral or Berry)",
+      "1 teaspoon Kfibre Essential (Neutral or Berry)",
       "1 banana, frozen",
       "1 cup oat or dairy milk",
       "1 tablespoon nut butter",
@@ -47,7 +47,7 @@ export const recipes: Recipe[] = [
       "Blitz for 45 seconds until smooth.",
       "Pour, drink. The prebiotic fibre disappears into the texture — you won't taste it.",
     ],
-    tip: "Scale the PureBiome dose 1 teaspoon per person — works identically in any smoothie recipe you already love.",
+    tip: "Scale the Kfibre dose 1 teaspoon per person — works identically in any smoothie recipe you already love.",
     featuredProduct: "essential",
     source: SOURCE,
   },
@@ -63,13 +63,13 @@ export const recipes: Recipe[] = [
     prepTime: "10 min + recipe time",
     difficulty: "Easy",
     ingredients: [
-      "1 teaspoon PureBiome Essential Neutral per person (4 teaspoons for 4 serves)",
+      "1 teaspoon Kfibre Essential Neutral per person (4 teaspoons for 4 serves)",
       "Your existing curry / stew / soup recipe",
     ],
     steps: [
-      "Cook your dish as normal — don't add PureBiome yet.",
+      "Cook your dish as normal — don't add Kfibre yet.",
       "Take the pot off the heat and let it cool for 2–3 minutes so it's warm, not boiling.",
-      "Stir one level teaspoon of PureBiome Neutral per person through the pot.",
+      "Stir one level teaspoon of Kfibre Neutral per person through the pot.",
       "Serve. The fibre dissolves into the sauce without thickening it.",
     ],
     tip: "Neutral is the safe default for savoury cooking. Berry and Citrus work in sweet/cooking-fruit contexts (stewed apples, Moroccan tagines with orange).",
@@ -77,13 +77,13 @@ export const recipes: Recipe[] = [
     source: SOURCE,
   },
   {
-    slug: "porridge-with-purebiome",
+    slug: "porridge-with-kfibre",
     title: "Porridge with a teaspoon",
     category: "Oats & porridge",
     eyebrow: "A warmer morning option",
     heroImage: "/images/recipes/tub-clean.png",
     description:
-      "Same rule as curry — add PureBiome after the pot's off the heat. Adds a nutty-sweet backbone to oat porridge without making it grainy.",
+      "Same rule as curry — add Kfibre after the pot's off the heat. Adds a nutty-sweet backbone to oat porridge without making it grainy.",
     serves: "1 serve",
     prepTime: "6 min",
     difficulty: "Easy",
@@ -91,13 +91,13 @@ export const recipes: Recipe[] = [
       "1/2 cup rolled oats",
       "1 cup milk (dairy or oat)",
       "Pinch of salt",
-      "1 teaspoon PureBiome Essential (Neutral or Berry)",
+      "1 teaspoon Kfibre Essential (Neutral or Berry)",
       "Toppings: banana, maple syrup, cinnamon — your call",
     ],
     steps: [
       "Cook oats in milk on low heat, stirring until thickened (about 4 minutes).",
       "Kill the heat. Let the pot rest 1 minute.",
-      "Stir in the teaspoon of PureBiome. Add a splash more milk if it's thickened too much — the prebiotic fibre absorbs moisture.",
+      "Stir in the teaspoon of Kfibre. Add a splash more milk if it's thickened too much — the prebiotic fibre absorbs moisture.",
       "Top, serve.",
     ],
     tip: "Works identically in rice porridge and rice pudding. Same 1 teaspoon per person, same add-at-the-end timing.",
@@ -116,12 +116,12 @@ export const recipes: Recipe[] = [
     prepTime: "30 seconds",
     difficulty: "Easy",
     ingredients: [
-      "1 teaspoon PureBiome Essential (Berry or Citrus recommended)",
+      "1 teaspoon Kfibre Essential (Berry or Citrus recommended)",
       "250 ml cold water or juice",
     ],
     steps: [
       "Pour the water or juice first.",
-      "Add the teaspoon of PureBiome.",
+      "Add the teaspoon of Kfibre.",
       "Stir hard for 10 seconds — you want both the soluble and insoluble fibres suspended.",
       "Drink straight through, then chase with a half-glass of plain water to wash the throat.",
     ],
@@ -136,17 +136,17 @@ export const recipes: Recipe[] = [
     eyebrow: "A quiet flour upgrade",
     heroImage: "/images/recipes/sachets.png",
     description:
-      "The only baking rule: one tablespoon of PureBiome Neutral per cup of flour, added to the dry mix first. Works in gluten-free blends too. You'll need a touch more rising agent and wet ingredients — the fibre absorbs moisture.",
+      "The only baking rule: one tablespoon of Kfibre Neutral per cup of flour, added to the dry mix first. Works in gluten-free blends too. You'll need a touch more rising agent and wet ingredients — the fibre absorbs moisture.",
     serves: "Scales with recipe",
     prepTime: "1 min of setup",
     difficulty: "Easy",
     ingredients: [
-      "1 tablespoon PureBiome Essential Neutral per cup of flour in the recipe",
+      "1 tablespoon Kfibre Essential Neutral per cup of flour in the recipe",
       "Your existing baking recipe (cakes, muffins, bread, scones)",
     ],
     steps: [
       "Measure the flour as usual.",
-      "Add PureBiome at a ratio of 1 Tbsp per 1 cup of flour. Whisk through the dry ingredients first — do this step before anything wet lands in the bowl.",
+      "Add Kfibre at a ratio of 1 Tbsp per 1 cup of flour. Whisk through the dry ingredients first — do this step before anything wet lands in the bowl.",
       "Add slightly more rising agent (10–15% more baking powder is a safe default) or slightly more wet ingredients to compensate for the fibre's moisture absorption.",
       "Mix, bake, done.",
     ],
@@ -161,7 +161,7 @@ export const recipes: Recipe[] = [
     eyebrow: "Snacks that earn their place",
     heroImage: "/images/recipes/lifestyle.jpg",
     description:
-      "Health balls are the perfect vehicle — rolled, fridge-set, portable. 2 tablespoons of PureBiome into the dry mix and you've got a microbiome-fed snack that doesn't taste like homework.",
+      "Health balls are the perfect vehicle — rolled, fridge-set, portable. 2 tablespoons of Kfibre into the dry mix and you've got a microbiome-fed snack that doesn't taste like homework.",
     serves: "12 balls",
     prepTime: "15 min + 30 min chill",
     difficulty: "Easy",
@@ -170,18 +170,18 @@ export const recipes: Recipe[] = [
       "1 cup rolled oats",
       "1/2 cup nut butter",
       "1/4 cup cocoa powder",
-      "2 tablespoons PureBiome Essential Neutral",
+      "2 tablespoons Kfibre Essential Neutral",
       "1 tablespoon honey or maple syrup (optional)",
       "Pinch of sea salt",
     ],
     steps: [
       "Blitz the dates until they form a paste.",
-      "Add the oats, nut butter, cocoa, PureBiome, and honey. Pulse until the mix holds together when pinched.",
-      "If it's dry (PureBiome absorbs moisture), add a splash of oat milk or warm water, 1 tsp at a time.",
+      "Add the oats, nut butter, cocoa, Kfibre, and honey. Pulse until the mix holds together when pinched.",
+      "If it's dry (Kfibre absorbs moisture), add a splash of oat milk or warm water, 1 tsp at a time.",
       "Roll into 12 tablespoon-sized balls.",
       "Chill 30 minutes. Store in the fridge for up to 5 days.",
     ],
-    tip: "Cheesecake base: 1 Tbsp PureBiome into the biscuit crumb. Chocolate crackles: 1 heaped Tbsp into the dry mix, a touch more Copha to bind.",
+    tip: "Cheesecake base: 1 Tbsp Kfibre into the biscuit crumb. Chocolate crackles: 1 heaped Tbsp into the dry mix, a touch more Copha to bind.",
     featuredProduct: "essential",
     source: SOURCE,
   },
@@ -192,18 +192,18 @@ export const recipes: Recipe[] = [
     eyebrow: "The Sunday-roast version",
     heroImage: "/images/recipes/range-lineup.webp",
     description:
-      "Mashed potato and gravy happily accept PureBiome without changing either dish. One teaspoon per serve into mash, one tablespoon into the gravy jug. Families don't notice.",
+      "Mashed potato and gravy happily accept Kfibre without changing either dish. One teaspoon per serve into mash, one tablespoon into the gravy jug. Families don't notice.",
     serves: "4 serves",
     prepTime: "2 min setup",
     difficulty: "Easy",
     ingredients: [
-      "For mash: 4 teaspoons PureBiome Essential Neutral + your usual mash",
-      "For gravy: 1 tablespoon PureBiome Essential Neutral + your usual gravy",
+      "For mash: 4 teaspoons Kfibre Essential Neutral + your usual mash",
+      "For gravy: 1 tablespoon Kfibre Essential Neutral + your usual gravy",
       "Extra splash of milk + butter for mash; extra 2 Tbsp water for gravy",
     ],
     steps: [
-      "Make the mash as normal. Stir in 1 teaspoon of PureBiome per person right at the end. Add a splash more milk and a knob more butter to keep the texture — the fibre absorbs moisture.",
-      "For gravy: once the gravy's off the heat and slightly cooled, whisk in 1 Tbsp of PureBiome. Add a couple of tablespoons of warm water if it thickens too much.",
+      "Make the mash as normal. Stir in 1 teaspoon of Kfibre per person right at the end. Add a splash more milk and a knob more butter to keep the texture — the fibre absorbs moisture.",
+      "For gravy: once the gravy's off the heat and slightly cooled, whisk in 1 Tbsp of Kfibre. Add a couple of tablespoons of warm water if it thickens too much.",
       "Serve. Nobody will ask what's different.",
     ],
     featuredProduct: "essential",
@@ -216,18 +216,18 @@ export const recipes: Recipe[] = [
     eyebrow: "Grazing-board trojan horse",
     heroImage: "/images/recipes/studio.png",
     description:
-      "Any creamy dip — hummus, tzatziki, beetroot, whipped feta — takes 1 tablespoon of PureBiome Neutral per batch without a flavour penalty. Good way to dose guests who'd never willingly drink a prebiotic.",
+      "Any creamy dip — hummus, tzatziki, beetroot, whipped feta — takes 1 tablespoon of Kfibre Neutral per batch without a flavour penalty. Good way to dose guests who'd never willingly drink a prebiotic.",
     serves: "~1 cup dip",
     prepTime: "1 min",
     difficulty: "Easy",
     ingredients: [
-      "1 tablespoon PureBiome Essential Neutral",
+      "1 tablespoon Kfibre Essential Neutral",
       "Your existing dip recipe",
       "1–2 tablespoons extra liquid (olive oil / lemon / water)",
     ],
     steps: [
       "Make the dip as normal, but stop before the final texture check.",
-      "Stir (or blitz) in 1 Tbsp of PureBiome.",
+      "Stir (or blitz) in 1 Tbsp of Kfibre.",
       "Check texture — if it's stiffer than you want, loosen with a splash more olive oil, lemon juice, or water.",
       "Serve. Goes in a grazing board nobody interrogates.",
     ],

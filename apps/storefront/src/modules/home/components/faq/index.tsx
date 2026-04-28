@@ -25,7 +25,7 @@ const qs = [
   },
   {
     q: "Can I take it while pregnant or breastfeeding?",
-    a: "All strains in PureBiome have published safety data in pregnancy. We still recommend checking with your GP before starting anything new — standard medical advice, not a cop-out.",
+    a: "All strains in Kfibre have published safety data in pregnancy. We still recommend checking with your GP before starting anything new — standard medical advice, not a cop-out.",
   },
   {
     q: "What if it doesn't work for me?",

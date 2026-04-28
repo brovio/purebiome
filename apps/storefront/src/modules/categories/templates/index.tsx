@@ -54,23 +54,23 @@ type EditorialConfig = {
 const editorial: Record<string, EditorialConfig> = {
   essential: {
     heroImage: "/images/products/range-lineup.webp",
-    heroAlt: "The PureBiome Essential range lined up",
+    heroAlt: "The Kfibre Essential range lined up",
     ritual: [
       {
         image: "/images/products/tub-neutral.webp",
-        alt: "PureBiome Essential Tub, Neutral",
+        alt: "Kfibre Essential Tub, Neutral",
         title: "Morning scoop",
         body: "One teaspoon, any liquid. Seven seconds before the coffee lands.",
       },
       {
         image: "/images/products/sachets-neutral.webp",
-        alt: "PureBiome Essential Sachets",
+        alt: "Kfibre Essential Sachets",
         title: "Midday sachet",
         body: "Same formula, single-serve. Keeps the ritual on the road.",
       },
       {
         image: "/images/products/tub-berry.webp",
-        alt: "PureBiome Essential Tub, Berry",
+        alt: "Kfibre Essential Tub, Berry",
         title: "Berry or Neutral",
         body: "Two flavours, same backbone. Neutral hides in anything. Berry for the water-bottle crowd.",
       },
@@ -96,17 +96,17 @@ const editorial: Record<string, EditorialConfig> = {
   },
   pro: {
     heroImage: "/images/products/tub-berry.webp",
-    heroAlt: "PureBiome Pro — targeted gut-health formulas",
+    heroAlt: "Kfibre Pro — targeted gut-health formulas",
     ritual: [
       {
         image: "/images/products/tub-berry.webp",
-        alt: "PureBiome Calm",
+        alt: "Kfibre Calm",
         title: "Calm",
         body: "For dietary bloating and indigestion. Berry, taken after meals that don't love you back.",
       },
       {
         image: "/images/products/tub-citrus.webp",
-        alt: "PureBiome Flow",
+        alt: "Kfibre Flow",
         title: "Flow",
         body: "For regularity support. Citrus, taken with breakfast. Pair with 2L of water.",
       },

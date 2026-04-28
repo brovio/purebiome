@@ -13,7 +13,7 @@ import { retrieveCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
   title: "Profile",
-  description: "View and edit your PureBiome profile.",
+  description: "View and edit your Kfibre profile.",
 }
 
 

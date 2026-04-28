@@ -2,7 +2,7 @@ import { listCategories } from "@lib/data/categories"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 /**
- * PureBiome site footer.
+ * Kfibre site footer.
  * 4-column layout on desktop, stacked on mobile:
  *   - Wordmark + ethos line
  *   - Shop (pulled from seeded categories)
@@ -27,7 +27,7 @@ export default async function Footer() {
             href="/"
             className="font-display text-3xl text-bone hover:text-culture transition-colors"
           >
-            PureBiome
+            Kfibre
           </LocalizedClientLink>
           <p className="text-sm text-bone/70 leading-relaxed max-w-sm">
             One daily ritual. Twelve living strains. Australian sugar cane,
@@ -117,7 +117,7 @@ export default async function Footer() {
       <div className="border-t border-bone/10">
         <div className="content-container flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6 text-xs text-bone/60">
           <span>
-            © {new Date().getFullYear()} PureBiome. Made in Brisbane,
+            © {new Date().getFullYear()} Kfibre. Made in Brisbane,
             Australia.
           </span>
           <span className="uppercase tracking-[0.14em]">

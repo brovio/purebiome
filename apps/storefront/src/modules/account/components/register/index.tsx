@@ -21,7 +21,7 @@ const Register = ({ setCurrentView }: Props) => {
       data-testid="register-page"
     >
       <h1 className="font-display text-4xl text-ink mb-4">
-        Join PureBiome
+        Join Kfibre
       </h1>
       <p className="text-center text-ink/70 text-sm leading-relaxed mb-6">
         Create an account for faster checkout, saved addresses, and order
@@ -69,7 +69,7 @@ const Register = ({ setCurrentView }: Props) => {
         </div>
         <ErrorMessage error={message} data-testid="register-error" />
         <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to PureBiome&apos;s{" "}
+          By creating an account, you agree to Kfibre&apos;s{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
             className="underline"

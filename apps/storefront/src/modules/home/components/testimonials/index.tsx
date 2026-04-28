@@ -6,7 +6,7 @@
 const reviews = [
   {
     quote:
-      "I've tried every probiotic on the shelf. Two weeks in on PureBiome and it's the first time 'feel the difference' wasn't marketing bullshit.",
+      "I've tried every probiotic on the shelf. Two weeks in on Kfibre and it's the first time 'feel the difference' wasn't marketing bullshit.",
     name: "Nadia W.",
     loc: "Fitzroy, VIC",
     rating: 5,

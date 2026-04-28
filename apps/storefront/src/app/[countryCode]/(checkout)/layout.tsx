@@ -5,7 +5,7 @@ import ChevronDown from "@modules/common/icons/chevron-down"
 /**
  * Checkout shell.
  * Reduced chrome: no main nav, no footer, no geobar — just a back-to-cart
- * chevron on the left and the PureBiome wordmark centre. Bone background to
+ * chevron on the left and the Kfibre wordmark centre. Bone background to
  * keep the visual continuity with the rest of the storefront.
  */
 export default function CheckoutLayout({
@@ -31,7 +31,7 @@ export default function CheckoutLayout({
             className="font-display text-2xl text-ink hover:text-cane transition-colors"
             data-testid="store-link"
           >
-            PureBiome
+            Kfibre
           </LocalizedClientLink>
           <div className="flex-1 basis-0 flex justify-end">
             <span className="hidden small:flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-ink/50">
@@ -44,7 +44,7 @@ export default function CheckoutLayout({
         {children}
       </div>
       <div className="py-10 w-full flex items-center justify-center text-xs text-ink/50 uppercase tracking-[0.14em]">
-        © {new Date().getFullYear()} PureBiome · Made in Brisbane
+        © {new Date().getFullYear()} Kfibre · Made in Brisbane
       </div>
     </div>
   )

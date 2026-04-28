@@ -28,7 +28,7 @@ export default function Problem() {
             them before they get anywhere useful.
           </p>
           <p className="font-display italic text-2xl text-cane pt-4 border-l-2 border-cane/30 pl-6">
-            We built PureBiome in the opposite direction: feed first, then
+            We built Kfibre in the opposite direction: feed first, then
             seed.
           </p>
         </div>

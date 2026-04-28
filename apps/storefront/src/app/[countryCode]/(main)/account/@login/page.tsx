@@ -5,7 +5,7 @@ import LoginTemplate from "@modules/account/templates/login-template"
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your PureBiome account.",
+  description: "Sign in to your Kfibre account.",
 }
 
 

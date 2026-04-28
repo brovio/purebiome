@@ -70,7 +70,7 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                   >
                     <div className="flex justify-between items-center">
                       <span className="font-display text-2xl text-culture">
-                        PureBiome
+                        Kfibre
                       </span>
                       <button
                         data-testid="close-menu-button"
@@ -136,7 +136,7 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                         />
                       </div>
                       <p className="text-xs text-bone/50 uppercase tracking-[0.14em]">
-                        © {new Date().getFullYear()} PureBiome · Made in
+                        © {new Date().getFullYear()} Kfibre · Made in
                         Brisbane
                       </p>
                     </div>

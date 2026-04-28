@@ -16,7 +16,7 @@ import { notFound } from "next/navigation"
  * wiring — V3 just swaps the middle content.
  */
 export const metadata: Metadata = {
-  title: "PureBiome — a tub, a scoop, thirty mornings",
+  title: "Kfibre — a tub, a scoop, thirty mornings",
   description:
     "12 live strains. 10 billion CFU. One daily scoop of a Queensland-sugar-cane prebiotic. Australian-made. No subscription.",
 }

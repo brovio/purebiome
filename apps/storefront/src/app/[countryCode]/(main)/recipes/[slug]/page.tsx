@@ -52,7 +52,7 @@ export default async function RecipeDetailPage({
     prepTime: recipe.prepTime,
     recipeYield: recipe.serves,
     image: [recipe.heroImage],
-    author: { "@type": "Organization", name: "PureBiome" },
+    author: { "@type": "Organization", name: "Kfibre" },
     recipeIngredient: recipe.ingredients,
     recipeInstructions: recipe.steps.map((s, i) => ({
       "@type": "HowToStep",
@@ -209,8 +209,7 @@ export default async function RecipeDetailPage({
             >
               kfibre.brov.io/recipe-inspiration
             </a>
-            . PureBiome Essential uses the same Australian sugar-cane
-            prebiotic as Kfibre — ratios transfer 1:1.
+            . Same Australian sugar-cane prebiotic — ratios transfer 1:1.
           </p>
         </div>
       </div>

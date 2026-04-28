@@ -16,19 +16,19 @@ import HomeJsonLd from "./home-jsonld"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
-  title: "PureBiome — Australian Prebiotic + Probiotic for Gut Health",
+  title: "Kfibre — Australian Prebiotic + Probiotic for Gut Health",
   description:
     "Clinically-studied prebiotic fibre from Australian sugarcane + 12 live probiotic strains. Monash Low FODMAP certified. Notice the difference in 3-5 days.",
   keywords: ["prebiotic Australia", "probiotic gut health", "Low FODMAP supplement", "digestive health", "gut microbiome", "Australian sugarcane fibre"],
   openGraph: {
-    title: "PureBiome — Australian Prebiotic + Probiotic for Gut Health",
+    title: "Kfibre — Australian Prebiotic + Probiotic for Gut Health",
     description: "Clinically-studied prebiotic fibre from Australian sugarcane + 12 live probiotic strains. Monash Low FODMAP certified.",
     type: "website",
     locale: "en_AU",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PureBiome — Australian Prebiotic + Probiotic",
+    title: "Kfibre — Australian Prebiotic + Probiotic",
     description: "12 clinically-studied strains. Australian sugarcane prebiotic. Monash Low FODMAP certified.",
   },
   alternates: {

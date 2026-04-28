@@ -8,11 +8,11 @@ type ProductTabsProps = {
 }
 
 /**
- * PureBiome PDP accordion tabs.
+ * Kfibre PDP accordion tabs.
  *
  * Tab content is product-specific where possible (full ingredients inferred
  * from the product description, plus weight from the Medusa variant), and
- * otherwise brand-wide (how-to-use, shipping, returns) with PureBiome copy.
+ * otherwise brand-wide (how-to-use, shipping, returns) with Kfibre copy.
  */
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [

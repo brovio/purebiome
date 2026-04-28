@@ -7,7 +7,7 @@ import { blogPosts } from "../../../../content/blog/posts.generated"
 export const metadata: Metadata = {
   title: "Journal — gut-health reading",
   description:
-    "Essays and research notes from the PureBiome team and our source partners at Kfibre. Microbiome science, daily rituals, and the occasional opinion.",
+    "Essays and research notes from the Kfibre team and our source partners at Kfibre. Microbiome science, daily rituals, and the occasional opinion.",
 }
 
 
@@ -21,7 +21,7 @@ export default function BlogIndexPage() {
       {/* Page header */}
       <div className="content-container pt-16 pb-10">
         <p className="text-xs uppercase tracking-[0.22em] text-cane/80 mb-3">
-          The PureBiome journal
+          The Kfibre journal
         </p>
         <h1 className="font-display text-5xl md:text-6xl text-ink leading-[1.05]">
           Gut-health reading.

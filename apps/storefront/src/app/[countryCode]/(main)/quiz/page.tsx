@@ -3,8 +3,8 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Gut Health Quiz | PureBiome",
-  description: "Find your perfect PureBiome product in 30 seconds. Personalised recommendations based on your gut health goals.",
+  title: "Gut Health Quiz | Kfibre",
+  description: "Find your perfect Kfibre product in 30 seconds. Personalised recommendations based on your gut health goals.",
 }
 
 const questions = [
@@ -78,7 +78,7 @@ export default function QuizPage() {
       <div className="border-b border-ink/5">
         <div className="content-container py-6">
           <LocalizedClientLink href="/" className="text-ink font-display text-xl">
-            PureBiome
+            Kfibre
           </LocalizedClientLink>
         </div>
       </div>

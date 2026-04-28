@@ -71,7 +71,7 @@ export default function Formula() {
           <div className="relative w-full max-w-[420px] aspect-square rounded-[32px] overflow-hidden bg-culture/15">
             <Image
               src="/images/products/tub-berry.webp"
-              alt="PureBiome Essential Tub, Berry"
+              alt="Kfibre Essential Tub, Berry"
               fill
               sizes="(max-width: 768px) 90vw, 420px"
               className="object-contain object-center p-6"

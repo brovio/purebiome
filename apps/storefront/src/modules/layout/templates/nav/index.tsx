@@ -9,7 +9,7 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 
 /**
- * PureBiome site navigation.
+ * Kfibre site navigation.
  * - Mobile: hamburger (SideMenu) + wordmark + cart
  * - Desktop: wordmark left, primary links centre-ish, account + cart right
  * - Colours: bone background, ink text, cane for active/hover.
@@ -47,7 +47,7 @@ export default async function Nav() {
               className="font-display text-2xl text-ink tracking-tight hover:text-cane transition-colors"
               data-testid="nav-store-link"
             >
-              PureBiome
+              Kfibre
             </LocalizedClientLink>
           </div>
 

@@ -11,7 +11,7 @@ export default function V3Hero() {
       <div className="content-container grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center py-20">
         <div className="md:col-span-7 flex flex-col gap-8">
           <p className="text-sm font-mono tracking-[0.22em] uppercase">
-            PureBiome / V3
+            Kfibre / V3
           </p>
           <h1 className="font-display text-6xl md:text-8xl leading-[0.95] tracking-tight">
             It's prebiotic.
@@ -38,7 +38,7 @@ export default function V3Hero() {
           <div className="relative w-full max-w-[440px] aspect-square bg-bone/60 rounded-2xl overflow-hidden">
             <Image
               src="/images/products/tub-neutral.webp"
-              alt="PureBiome Essential Tub"
+              alt="Kfibre Essential Tub"
               fill
               priority
               sizes="(max-width: 768px) 90vw, 440px"
@@ -48,7 +48,7 @@ export default function V3Hero() {
           <div className="relative w-full max-w-[440px] aspect-[3/2] bg-bone/60 rounded-2xl overflow-hidden">
             <Image
               src="/images/products/sachets-neutral.webp"
-              alt="PureBiome Essential Sachets"
+              alt="Kfibre Essential Sachets"
               fill
               sizes="(max-width: 768px) 90vw, 440px"
               className="object-contain object-center p-4"

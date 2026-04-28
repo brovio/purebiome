@@ -4,9 +4,9 @@ import RecipeCard from "@modules/recipes/components/recipe-card"
 import { recipes } from "../../../../content/recipes/recipes"
 
 export const metadata: Metadata = {
-  title: "Ritual recipes — cooking with PureBiome",
+  title: "Ritual recipes — cooking with Kfibre",
   description:
-    "Eight ways to stir PureBiome Essential into food you already make. No new recipes to learn — just a teaspoon at the right moment.",
+    "Eight ways to stir Kfibre Essential into food you already make. No new recipes to learn — just a teaspoon at the right moment.",
 }
 
 
@@ -22,7 +22,7 @@ export default function RecipesIndexPage() {
           Stir it in.
         </h1>
         <p className="text-ink/70 mt-4 max-w-xl leading-relaxed">
-          PureBiome isn't a new recipe — it's a half-teaspoon step you add
+          Kfibre isn't a new recipe — it's a half-teaspoon step you add
           to food you already cook. Eight low-effort prompts below. One
           rule: never boil it.
         </p>

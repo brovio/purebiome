@@ -20,8 +20,8 @@ const fontDisplay = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
   title: {
-    default: "PureBiome — daily prebiotic + live cultures",
-    template: "%s · PureBiome",
+    default: "Kfibre — daily prebiotic + live cultures",
+    template: "%s · Kfibre",
   },
   description:
     "One daily ritual. Twelve living strains. Australian sugar cane, re-sourced for your microbiome.",

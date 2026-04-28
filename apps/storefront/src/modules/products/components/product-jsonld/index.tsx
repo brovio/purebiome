@@ -37,10 +37,10 @@ export default function ProductJsonLd({
     "@type": "Product",
     name: product.title,
     description:
-      product.description ?? product.subtitle ?? `${product.title} — PureBiome.`,
+      product.description ?? product.subtitle ?? `${product.title} — Kfibre.`,
     image: product.images?.map((i) => i.url).filter(Boolean) ?? [],
     sku: product.variants?.[0]?.sku,
-    brand: { "@type": "Brand", name: "PureBiome" },
+    brand: { "@type": "Brand", name: "Kfibre" },
     url,
     offers: cheapest
       ? {

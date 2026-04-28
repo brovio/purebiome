@@ -12,7 +12,7 @@ export default function HomeJsonLd() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "PureBiome",
+    name: "Kfibre",
     alternateName: "Kfibre",
     url: base,
     logo: `${base}/images/products/range-lineup.webp`,
@@ -28,7 +28,7 @@ export default function HomeJsonLd() {
     },
     brand: {
       "@type": "Brand",
-      name: "PureBiome",
+      name: "Kfibre",
       description: "Prebiotic fibre from Australian sugarcane combined with 12 clinically-studied probiotic strains.",
     },
     knowsAbout: [
@@ -44,7 +44,7 @@ export default function HomeJsonLd() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "PureBiome",
+    name: "Kfibre",
     url: base,
     potentialAction: {
       "@type": "SearchAction",
@@ -56,7 +56,7 @@ export default function HomeJsonLd() {
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to take PureBiome for gut health",
+    name: "How to take Kfibre for gut health",
     description: "A simple 7-second daily ritual to improve your gut microbiome health with Australian prebiotics and probiotics.",
     totalTime: "PT7S",
     estimatedCost: {
@@ -67,7 +67,7 @@ export default function HomeJsonLd() {
     supply: [
       {
         "@type": "HowToSupply",
-        name: "PureBiome Essential Tub or Sachets",
+        name: "Kfibre Essential Tub or Sachets",
       },
       {
         "@type": "HowToSupply",
@@ -83,7 +83,7 @@ export default function HomeJsonLd() {
         "@type": "HowToStep",
         position: 1,
         name: "Scoop",
-        text: "Add one teaspoon of PureBiome to your morning coffee, smoothie, or water. No blender required.",
+        text: "Add one teaspoon of Kfibre to your morning coffee, smoothie, or water. No blender required.",
         url: `${base}/au#how-it-works`,
         image: `${base}/images/products/tub-neutral.webp`,
       },
@@ -110,23 +110,23 @@ export default function HomeJsonLd() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is PureBiome and how does it work?",
+        name: "What is Kfibre and how does it work?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "PureBiome is an Australian-made prebiotic and probiotic supplement that combines sugarcane-derived prebiotic fibre with 12 clinically-studied probiotic strains. The prebiotic feeds beneficial gut bacteria while the probiotics add live cultures that survive stomach acid to reach your intestines.",
+          text: "Kfibre is an Australian-made prebiotic and probiotic supplement that combines sugarcane-derived prebiotic fibre with 12 clinically-studied probiotic strains. The prebiotic feeds beneficial gut bacteria while the probiotics add live cultures that survive stomach acid to reach your intestines.",
         },
       },
       {
         "@type": "Question",
-        name: "Is PureBiome Low FODMAP certified?",
+        name: "Is Kfibre Low FODMAP certified?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, PureBiome is Monash University Low FODMAP certified. The long-chain prebiotic fibre from Australian sugarcane feeds your microbiome without fermenting aggressively in the gut, making it suitable for people with IBS and sensitive digestion.",
+          text: "Yes, Kfibre is Monash University Low FODMAP certified. The long-chain prebiotic fibre from Australian sugarcane feeds your microbiome without fermenting aggressively in the gut, making it suitable for people with IBS and sensitive digestion.",
         },
       },
       {
         "@type": "Question",
-        name: "How long until I notice results from PureBiome?",
+        name: "How long until I notice results from Kfibre?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Most people notice improvements in digestion within 3-5 days of daily use. For significant microbiome changes, expect 2-3 weeks of consistent use. Everyone's gut is different, but our 10 billion CFU end-of-life guarantee ensures you're getting live cultures with every scoop.",
@@ -134,7 +134,7 @@ export default function HomeJsonLd() {
       },
       {
         "@type": "Question",
-        name: "What's the difference between PureBiome Essential and Pro ranges?",
+        name: "What's the difference between Kfibre Essential and Pro ranges?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Essential is our daily maintenance formula with prebiotic fibre + probiotics for general gut health. Pro range includes targeted formulas: Calm (Berry) for bloating and indigestion, and Flow (Citrus) for regularity support. Both use the same 12-strain foundation with added botanicals for specific concerns.",
@@ -146,7 +146,7 @@ export default function HomeJsonLd() {
   const medicalWebPageSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    name: "PureBiome Gut Health Supplements",
+    name: "Kfibre Gut Health Supplements",
     description: "Australian prebiotic and probiotic supplements for digestive health and microbiome support.",
     about: {
       "@type": "MedicalCondition",

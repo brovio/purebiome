@@ -128,8 +128,7 @@ export default async function BlogPostPage({
             >
               kfibre.brov.io
             </a>
-            . We're republishing it here with light reformatting because the
-            science under PureBiome is the same science under Kfibre — same
+            . We're republishing it here with light reformatting — same
             Australian sugar-cane prebiotic backbone, same research group.
           </p>
         </div>
